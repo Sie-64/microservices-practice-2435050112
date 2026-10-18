@@ -18,4 +18,4 @@
 | status | VARCHAR(255) | 无 | 状态(pending/handled) |
 
 ## 关系说明
-- `alerts.vehicle_id` 逻辑关联 `vehicles.id`（一对多关系：一辆车可以有多条告警记录）。
+- `alerts.vehicle_id` 逻辑关联 `vehicles.id`（一对多关系）。

@@ -1,9 +1,7 @@
 package com.zjgsu.zxy.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
-@Data
 @Entity
 @Table(name = "alerts")
 public class Alert {
@@ -12,13 +10,29 @@ public class Alert {
     private Long id;
 
     @Column(nullable = false)
-    private Long vehicleId; // 关联车辆
+    private Long vehicleId;
 
     @Column(nullable = false)
-    private String alertType; // 告警类型，如"漏电"、"老化"
+    private String alertType;
 
     @Column(nullable = false)
-    private Integer level; // 告警等级：1, 2, 3
+    private Integer level;
 
-    private String status; // 状态: pending/handled
+    private String status;
+
+    // Getters and Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public Long getVehicleId() { return vehicleId; }
+    public void setVehicleId(Long vehicleId) { this.vehicleId = vehicleId; }
+
+    public String getAlertType() { return alertType; }
+    public void setAlertType(String alertType) { this.alertType = alertType; }
+
+    public Integer getLevel() { return level; }
+    public void setLevel(Integer level) { this.level = level; }
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 }

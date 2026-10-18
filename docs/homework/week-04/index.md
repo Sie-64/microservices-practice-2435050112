@@ -26,3 +26,14 @@
 ```bash
 cd monolith
 ./mvnw spring-boot:run
+
+## 数据库持久化
+
+### 实现思路
+- **MySQL 接入**：主配置文件 `application.yml` 中配置了 MySQL 数据源，JPA 自动建表。
+- **JPA 存储库**：数据访问代码位于 `com.zjgsu.zxy.repository` 包下，继承 `JpaRepository`。
+- **DTO 使用**：使用了 `VehicleRequest` 和 `AlertRequest` 接收 API 输入，避免直接暴露实体。
+- **测试数据准备**：通过 `src/test/resources/application.yml` 配置了 H2 内存数据库，并在 `BusinessIntegrationTest.java` 中编写了测试代码，每次执行 `./mvnw test` 时自动准备测试数据并运行。
+
+### 运行结果
+启动应用后，MySQL 数据库中自动生成了 `vehicles` 和 `alerts` 两张表，数据读写正常。

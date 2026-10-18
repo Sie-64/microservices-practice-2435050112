@@ -59,3 +59,12 @@ sequenceDiagram
             告警服务->>通知服务: 发送增强通知(告警+AI+预测)
         end
     end
+
+    ## 本地 MySQL 配置说明
+
+### 安装与建库
+1. 本地安装 MySQL（例如使用 Homebrew: `brew install mysql`）。
+2. 启动 MySQL 服务并登录：`mysql -u root -p`。
+3. 创建数据库：
+   ```sql
+   CREATE DATABASE smart_car DEFAULT CHARACTER SET utf8mb4;
