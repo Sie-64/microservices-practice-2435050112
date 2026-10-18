@@ -87,3 +87,28 @@ cd monolith
 
 ### 当前未实现能力
 本周仅为工程骨架验证，**尚未实现**业务 CRUD、Service、Repository、数据库持久化等功能。
+
+
+## API 测试示例 (curl)
+
+请先启动项目（端口 8080）。本项目已实现车辆和告警的完整流程。
+
+### 1. 创建车辆
+```bash
+curl -X POST http://localhost:8080/api/vehicles \
+  -H "Content-Type: application/json" \
+  -d '{"plateNumber":"浙A12345","brand":"Tesla","tier":"full"}'
+```
+
+### 2. 创建告警（触发业务规则）
+```bash
+# 正常创建（级别为1）
+curl -X POST http://localhost:8080/api/alerts \
+  -H "Content-Type: application/json" \
+  -d '{"vehicleId":1,"alertType":"漏电","level":1}'
+
+# 触发报错（级别为5，应该返回400 Bad Request）
+curl -X POST http://localhost:8080/api/alerts \
+  -H "Content-Type: application/json" \
+  -d '{"vehicleId":1,"alertType":"老化","level":5}'
+```

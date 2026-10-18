@@ -30,3 +30,11 @@
 | level | Integer | 告警等级（1/2/3） |
 | occurredAt | DateTime | 发生时间 |
 | status | String | 状态（pending/handled） |
+
+## 10.18-实现：业务建模与持久化
+- **核心业务流程**：车主录入车辆 -> 车辆触发告警 -> 系统记录告警状态。
+- **业务实体与关系**：
+  - `Vehicle`（车辆实体）
+  - `Alert`（告警实体）
+  - 关系：`Alert` 通过 `vehicleId` 关联 `Vehicle`，为一对多关系。
+- **业务规则**：在 `AlertService` 中校验，告警等级（level）必须是 1、2 或 3，否则抛出 `IllegalArgumentException` 拒绝保存。

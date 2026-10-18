@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: monolith
+  datasource:
+    # 注意：这里的 smart_car 是我们刚才建的库
+    url: jdbc:mysql://localhost:3306/smart_car?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf8&allowPublicKeyRetrieval=true
+    username: root
+    password: 12345678   # ⚠️ 请把这里换成你刚才在终端里设置的 MySQL 密码！
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update   # 自动建表更新
+    show-sql: true       # 在控制台打印 SQL 语句
+    properties:
+      hibernate:
+        format_sql: true # 格式化 SQL
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
