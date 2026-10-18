@@ -1,4 +1,4 @@
-nano README.md# 🚗 智驾伴侣（Smart Drive Companion）
+# 🚗 智驾伴侣（Smart Drive Companion）
 
 ## 项目简介
 **智驾伴侣**是一个面向车主的智能车辆服务平台。项目采用微服务架构，根据用户购买的套餐（轻量版、标准版、豪华版）提供分级数据服务，包含车辆定位、告警分级、驾驶行为分析、碳排核算以及3D全息驾驶舱与AI语音助手等核心功能。
@@ -59,56 +59,3 @@ sequenceDiagram
             告警服务->>通知服务: 发送增强通知(告警+AI+预测)
         end
     end
-
----
-
-## 本地运行说明
-
-### 环境要求
-- **Java 25**（JDK 25 LTS）
-- **Maven 3.9+**（推荐使用工程内 `./mvnw`）
-- Spring Boot 4.0.x
-
-### 启动命令
-```bash
-cd monolith
-./mvnw spring-boot:run
-```
-
-### 测试命令
-```bash
-cd monolith
-./mvnw test
-```
-
-### 访问地址
-- 问候接口：http://localhost:8080/api/hello
-- 健康检查：http://localhost:8080/actuator/health
-
-### 当前未实现能力
-本周仅为工程骨架验证，**尚未实现**业务 CRUD、Service、Repository、数据库持久化等功能。
-
-
-## API 测试示例 (curl)
-
-请先启动项目（端口 8080）。本项目已实现车辆和告警的完整流程。
-
-### 1. 创建车辆
-```bash
-curl -X POST http://localhost:8080/api/vehicles \
-  -H "Content-Type: application/json" \
-  -d '{"plateNumber":"浙A12345","brand":"Tesla","tier":"full"}'
-```
-
-### 2. 创建告警（触发业务规则）
-```bash
-# 正常创建（级别为1）
-curl -X POST http://localhost:8080/api/alerts \
-  -H "Content-Type: application/json" \
-  -d '{"vehicleId":1,"alertType":"漏电","level":1}'
-
-# 触发报错（级别为5，应该返回400 Bad Request）
-curl -X POST http://localhost:8080/api/alerts \
-  -H "Content-Type: application/json" \
-  -d '{"vehicleId":1,"alertType":"老化","level":5}'
-```
