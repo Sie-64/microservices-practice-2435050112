@@ -13,3 +13,16 @@
 
 ## 测试结果
 运行测试后，H2 数据库自动建表，业务规则测试通过，正常请求返回 200 并保存数据，非法等级返回 400 错误。
+
+## 构建应用实现
+
+### 实现思路
+- **业务模型**：定义了 `Vehicle`（车辆）和 `Alert`（告警）两个 JPA 实体。
+- **业务规则**：在 `AlertService` 中实现校验，如果告警级别 `level` 不在 1-3 之间，抛出 `IllegalArgumentException`。
+- **REST 接口**：使用 `@RestController` 实现了 4 个接口（均在 `/api` 路径下），包含创建车辆、查询车辆、创建告警、查询告警。
+- **分层设计**：Controller 只负责接收 HTTP 请求和返回响应，具体的业务校验全部交由 Service 层处理，没有直接编写数据访问逻辑。
+
+### 运行命令
+```bash
+cd monolith
+./mvnw spring-boot:run
