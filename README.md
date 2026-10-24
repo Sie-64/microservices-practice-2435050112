@@ -68,3 +68,9 @@ sequenceDiagram
 3. 创建数据库：
    ```sql
    CREATE DATABASE smart_car DEFAULT CHARACTER SET utf8mb4;
+
+## API 验证示例
+
+### 健康检查
+```bash
+curl -i http://localhost:8080/actuator/health
