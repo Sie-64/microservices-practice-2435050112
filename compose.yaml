@@ -1,0 +1,36 @@
+services:
+  # 1. MySQL 数据库服务
+  mysql:
+    image: mysql:8.4.11
+    container_name: smart_car_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # 2. Spring Boot 应用服务 
+  app:
+    build: 
+      context: ./monolith  # 外部指向 ./monolith
+    container_name: smart_car_app
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy # 等数据库健康后启动
+    environment:
+      # 微服务网络：容器间直接用服务名 mysql 访问，而不是 localhost
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/${MYSQL_DATABASE}?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf8&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+volumes:
+  mysql_data:
