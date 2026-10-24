@@ -24,3 +24,14 @@
 3. **查询车辆 (GET)**：访问 `http://localhost:8080/api/vehicles/1`，成功返回 `200 OK` 及查询到的车辆数据。
 
 证明容器化后的业务接口完全可用。
+
+## 任务4：数据持久化验证
+
+### 验证过程
+1. 调用 `POST /api/vehicles` 创建一条车辆数据，并使用 `GET /api/vehicles/1` 查询，确认数据存在（记下ID和车牌号）。
+2. 在终端执行 `docker compose down` 停止并移除容器（**不带有 -v 参数**，保留数据卷）。
+3. 执行 `docker compose up -d` 重新启动容器。
+4. 再次调用 `GET /api/vehicles/1`，发现数据依然存在，ID与字段值均未改变。
+
+### 命名数据卷的作用
+在 `compose.yaml` 中定义的 `mysql_data` 属于命名数据卷（Named Volume）。它将容器内的 `/var/lib/mysql` 目录映射到了宿主机的 Docker 管理区域。即使容器被完全删除，只要不执行 `docker compose down -v` 或手动删除该卷，数据就不会丢失，完美实现了数据库的持久化。
