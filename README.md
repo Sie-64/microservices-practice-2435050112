@@ -74,3 +74,10 @@ sequenceDiagram
 ### 健康检查
 ```bash
 curl -i http://localhost:8080/actuator/health
+
+创建车辆（POST）
+curl -i -X POST http://localhost:8080/api/vehicles -H "Content-Type: application/json" -d '{"plateNumber":"浙A88888","brand":"BYD","tier":"full"}'、
+
+查询车辆（GET）
+curl -i http://localhost:8080/api/vehicles/1
+
