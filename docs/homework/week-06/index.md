@@ -15,3 +15,14 @@
 ### 验证结果
 - 服务启动成功，分别运行在 8082 和 8083 端口。
 - 跨服务调用正常：当车辆不存在时，告警服务成功拦截请求并返回 400 错误。
+
+```markdown
+## 1. 服务拆分设计
+
+### 实现思路
+按照 DDD（领域驱动设计）思想，将原本的单体系统按业务能力拆分为三个独立的 Spring Boot 服务：`user-service`、`vehicle-service` 和 `alert-service`。
+- **数据隔离**：为每个服务分配了独立的数据库（user_db, vehicle_db, alert_db）。
+- **通信协作**：`alert-service` 在写入数据前，通过 `RestTemplate` 调用 `vehicle-service` 的接口进行合法性校验。
+
+### 验证结果
+已在本地分别启动 `vehicle-service` (8082) 和 `alert-service` (8083)，测试了跨服务调用。若传入不存在的 vehicleId，告警服务能成功拦截并返回 400 错误，验证了业务边界逻辑。
