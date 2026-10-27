@@ -1,0 +1,22 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: alert-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/alert_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 12345678
+  jpa:
+    hibernate:
+      ddl-auto: update
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+# 重点：配置车辆服务的地址
+vehicle:
+  service:
+    url: http://localhost:8082/api/vehicles

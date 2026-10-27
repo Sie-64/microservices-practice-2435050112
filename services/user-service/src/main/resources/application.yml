@@ -1,0 +1,17 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/user_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 12345678 # ⚠️ 换成你的真实密码
+  jpa:
+    hibernate:
+      ddl-auto: update
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

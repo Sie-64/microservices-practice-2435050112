@@ -1,0 +1,22 @@
+server:
+  port: 8081   # ⚠️ 关键：独立服务跑在 8081，不能和原项目的 8080 冲突
+
+spring:
+  application:
+    name: alert-service
+  datasource:
+    # 继续连你本地的 MySQL
+    url: jdbc:mysql://localhost:3306/smart_car?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf8&allowPublicKeyRetrieval=true
+    username: root
+    password: 12345678 # ⚠️ 换成你真实的 MySQL 密码
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
