@@ -1,36 +1,56 @@
 services:
-  # 1. MySQL 数据库服务
-  mysql:
+  # ================= 3个独立数据库 =================
+  mysql-user:
     image: mysql:8.4.11
-    container_name: smart_car_mysql
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-    ports:
-      - "3306:3306"
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: user_db
     volumes:
-      - mysql_data:/var/lib/mysql
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
+      - user_data:/var/lib/mysql
 
-  # 2. Spring Boot 应用服务 
-  app:
-    build: 
-      context: ./monolith  # 外部指向 ./monolith
-    container_name: smart_car_app
-    ports:
-      - "8080:8080"
-    depends_on:
-      mysql:
-        condition: service_healthy # 等数据库健康后启动
+  mysql-vehicle:
+    image: mysql:8.4.11
     environment:
-      # 微服务网络：容器间直接用服务名 mysql 访问，而不是 localhost
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/${MYSQL_DATABASE}?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf8&allowPublicKeyRetrieval=true
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: vehicle_db
+    volumes:
+      - vehicle_data:/var/lib/mysql
+
+  mysql-alert:
+    image: mysql:8.4.11
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: alert_db
+    volumes:
+      - alert_data:/var/lib/mysql
+
+  # ================= 3个独立微服务 =================
+  user-service:
+    build: ./services/user-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mysql-user
+
+  vehicle-service:
+    build: ./services/vehicle-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mysql-vehicle
+
+  alert-service:
+    build: ./services/alert-service
+    ports:
+      - "8083:8083"
+    depends_on:
+      - mysql-alert
+      - vehicle-service
+    environment:
+      # 环境变量覆盖（老师要求），证明我们可以在 Docker 外部控制地址
+      - VEHICLE_SERVICE_URL=http://vehicle-service:8082/api/vehicles
 
 volumes:
-  mysql_data:
+  user_data:
+  vehicle_data:
+  alert_data:

@@ -4,7 +4,8 @@ spring:
   application:
     name: alert-service
   datasource:
-    url: jdbc:mysql://localhost:3306/alert_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Asia/Shanghai
+    # 1. 连自己的数据库：mysql-alert 的 alert_db
+    url: jdbc:mysql://mysql-alert:3306/alert_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
     username: root
     password: 12345678
   jpa:
@@ -16,7 +17,7 @@ management:
       exposure:
         include: health,info
 
-# 重点：配置车辆服务的地址
+# 2. 跨服务调用：必须用 docker 服务名 vehicle-service
 vehicle:
   service:
-    url: http://localhost:8082/api/vehicles
+    url: http://vehicle-service:8082/api/vehicles
