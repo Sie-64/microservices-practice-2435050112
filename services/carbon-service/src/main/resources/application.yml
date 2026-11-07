@@ -1,0 +1,28 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: carbon-service
+  datasource:
+    url: jdbc:mysql://mysql-carbon:3306/carbon_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:12345678}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_SERVER_ADDR:localhost:8848}
+        group: COURSE_GROUP
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+carbon:
+  factors:
+    gasoline-kg-per-liter: ${CARBON_GASOLINE_FACTOR:2.31}
+    grid-kg-per-kwh: ${CARBON_GRID_FACTOR:0.581}

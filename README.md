@@ -1,83 +1,166 @@
-# 🚗 智驾伴侣（Smart Drive Companion）
+# 智驾伴侣（Smart Drive Companion）
 
-## 项目简介
-**智驾伴侣**是一个面向车主的智能车辆服务平台。项目采用微服务架构，根据用户购买的套餐（轻量版、标准版、豪华版）提供分级数据服务，包含车辆定位、告警分级、驾驶行为分析、碳排核算以及3D全息驾驶舱与AI语音助手等核心功能。
+智驾伴侣是一个面向车主的车辆服务平台。项目从单体应用逐步演进为 Spring Boot
+微服务，当前实现了用户、车辆、告警、驾驶行为和碳排五个服务，并使用 Nacos
+完成服务注册与发现。
 
-## 项目目标与适用场景
-- **项目目标**：构建一套可支撑多租户（多版本）的智能车主平台，解决车主在车辆监控、故障预警、驾驶习惯改善以及碳排管理等方面的痛点。
-- **适用场景**：私家车主日常用车、新能源车电池监控、车队管理（后续扩展）、驾驶行为分析等。
+## 当前服务
 
-## 主要用户角色及需求
-本项目面向**车主**（唯一业务用户），按套餐分为三个层级：
+| 服务名 | 宿主机端口 | 数据库 | 职责 |
+|---|---:|---|---|
+| `user-service` | 8081 | `user_db` | 车主与套餐信息 |
+| `vehicle-service` | 8082 | `vehicle_db` | 车辆档案 |
+| `alert-service` | 8083 | `alert_db` | 告警记录与等级校验 |
+| `driving-behavior-service` | 8084 | `driving_db` | 驾驶事件、评分和月度报告 |
+| `carbon-service` | 8085 | `carbon_db` | 碳排计算和历史报告 |
 
-| 用户角色 | 核心需求 |
-|----------|----------|
-| 🥉 轻量版用户 | 基础车辆定位、基础状态查看、基础告警列表 |
-| 🥈 标准版用户 | 告警分级（一/二/三级）、驾驶行为评分、油耗统计、月度报告、轨迹回放 |
-| 🥇 豪华版用户 | 3D全息车辆模型、3D城市地图、AI语音助手、碳排报告、预测性维护、远程诊断 |
+所有业务服务使用 `COURSE_GROUP` 分组，服务名与
+[docs/microservices-design.md](docs/microservices-design.md) 保持一致。
 
-## 功能模块划分
+## 数据归属与跨服务调用
 
-| 模块 | 包含功能 | 对应微服务 | 适用版本 |
-|------|----------|------------|----------|
-| ① 认证与用户 | 登录、JWT签发、套餐校验、用户信息、车辆档案 | 认证订阅服务、用户车辆服务 | 全部 |
-| ② 车辆与定位 | 2D地图、实时定位、轨迹回放、常去地点 | 车辆定位服务 | 全部（豪华版含3D切换） |
-| ③ 告警与诊断 | 告警列表、告警分级、保养提醒 | 告警规则服务 | 全部（分级仅标准/豪华） |
-| ④ 驾驶行为与报告 | 驾驶评分、急加速/急刹车统计、油耗统计、月度报告 | 驾驶行为服务 | 标准/豪华 |
-| ⑤ 碳排与环保 | 碳排放报告、碳足迹3D热力 | 碳排服务 | 仅豪华 |
-| ⑥ 预测与维护 | 预测性维护、远程诊断 | 预测维护服务 | 仅豪华 |
-| ⑦ 3D建模 | 3D车辆模型、3D城市地图 | 3D建模数据服务 | 仅豪华 |
-| ⑧ AI与语音交互 | AI语音对话、语音控制副屏 | AI助手服务 | 仅豪华 |
-| ⑨ 前端与BFF | 三套主屏、BFF数据聚合、套餐路由 | BFF / API网关 | 全部 |
+- 每个服务只读写自己的数据库，不建立跨库外键，也不直接访问其他服务的 Repository。
+- `alert-service` 和 `driving-behavior-service` 通过 Nacos 发现
+  `vehicle-service`，校验车辆是否存在。
+- `carbon-service` 通过 Nacos 发现 `driving-behavior-service`，读取月度驾驶
+  汇总后计算碳排，不复制原始驾驶事件。
+- 找不到依赖服务的实例时返回 HTTP 503；关联数据不存在时返回 400 或 404。
 
-## 核心业务流程：告警触发 → 通知闭环
+## 启动
 
-```mermaid
-sequenceDiagram
-    participant 传感器 as 车辆传感器
-    participant 车辆服务 as 车辆定位服务
-    participant MQ as 消息队列
-    participant 告警服务 as 告警规则服务
-    participant 用户服务 as 用户车辆服务
-    participant 通知服务 as 通知服务
-    participant AI服务 as AI助手服务
-    participant 预测服务 as 预测维护服务
+需要 Docker Desktop 和 Java 17（本地测试使用）。在内存较小的 Docker
+Desktop 环境中，按“Nacos → 数据库 → 业务服务”的顺序启动，避免多个 JVM
+同时初始化造成资源竞争。
 
-    传感器->>车辆服务: 上报车辆数据
-    车辆服务->>MQ: 发送消息(topic: vehicle.data)
-    MQ->>告警服务: 消费消息
-    告警服务->>告警服务: 规则引擎判断告警等级
-    alt 一级/二级/三级告警
-        告警服务->>用户服务: 获取车主信息
-        用户服务-->>告警服务: 车主信息(含套餐)
-        告警服务->>通知服务: 发送告警通知
-        alt 车主套餐为豪华版
-            告警服务->>AI服务: 请求故障分析
-            AI服务-->>告警服务: 分析结果
-            告警服务->>预测服务: 请求故障预测
-            预测服务-->>告警服务: 预测结果
-            告警服务->>通知服务: 发送增强通知(告警+AI+预测)
-        end
-    end
+先独立启动 Nacos：
 
-    ## 本地 MySQL 配置说明
-
-### 安装与建库
-1. 本地安装 MySQL（例如使用 Homebrew: `brew install mysql`）。
-2. 启动 MySQL 服务并登录：`mysql -u root -p`。
-3. 创建数据库：
-   ```sql
-   CREATE DATABASE smart_car DEFAULT CHARACTER SET utf8mb4;
-
-## API 验证示例
-
-### 健康检查
 ```bash
-curl -i http://localhost:8080/actuator/health
+docker compose up -d nacos
+```
 
-创建车辆（POST）
-curl -i -X POST http://localhost:8080/api/vehicles -H "Content-Type: application/json" -d '{"plateNumber":"浙A88888","brand":"BYD","tier":"full"}'、
+确认 Nacos 状态为 `healthy`：
 
-查询车辆（GET）
-curl -i http://localhost:8080/api/vehicles/1
+```bash
+docker compose ps
+```
 
+再启动五个数据库：
+
+```bash
+docker compose up -d \
+  mysql-user mysql-vehicle mysql-alert mysql-driving mysql-carbon
+```
+
+最后按依赖顺序启动业务服务：
+
+```bash
+docker compose up -d vehicle-service
+docker compose up -d user-service alert-service
+docker compose up -d driving-behavior-service
+docker compose up -d carbon-service
+```
+
+首次构建代码时，可对需要构建的服务增加 `--build`。在分配 8GB 以上内存的
+Docker Desktop 中，也可以使用 `docker compose up -d --build` 一次启动。
+
+Nacos 控制台：
+
+```text
+http://localhost:8848/nacos/
+```
+
+当前 Nacos 为本地开发使用的 `standalone` 模式，业务服务在
+`http://localhost:8848` 注册。容器内地址由 `NACOS_SERVER_ADDR=nacos:8848`
+覆盖。
+
+停止服务但保留数据库和 Nacos 数据：
+
+```bash
+docker compose down
+```
+
+只有明确需要清空全部数据时才使用 `docker compose down -v`。
+
+## 冒烟测试
+
+启动全部服务后，从仓库根目录执行：
+
+```bash
+bash scripts/smoke-test.sh
+```
+
+脚本依次检查五个服务的 `/actuator/health`。任一服务返回非 200 时，脚本返回
+非零状态。
+
+## 单元与上下文测试
+
+各服务的测试使用 H2 内存数据库，并在测试配置中关闭 Nacos 注册，不依赖真实
+MySQL 或 Nacos。进入对应服务目录执行：
+
+```bash
+cd services/user-service && ./mvnw test
+cd services/vehicle-service && ./mvnw test
+cd services/alert-service && ./mvnw test
+cd services/driving-behavior-service && ./mvnw test
+cd services/carbon-service && ./mvnw test
+```
+
+## API 示例
+
+创建车辆，返回结果中的 `id` 用于后续驾驶事件：
+
+```bash
+curl -X POST http://localhost:8082/api/vehicles \
+  -H "Content-Type: application/json" \
+  -d '{"plateNumber":"浙A88888","brand":"BYD"}'
+```
+
+录入驾驶事件：
+
+```bash
+curl -X POST http://localhost:8084/api/driving-events \
+  -H "Content-Type: application/json" \
+  -d '{
+    "vehicleId": 1,
+    "occurredAt": "2026-11-07T09:00:00",
+    "distanceKm": 32.5,
+    "fuelLiters": 2.8,
+    "energyKwh": 0,
+    "harshAccelerationCount": 2,
+    "harshBrakingCount": 1,
+    "maxSpeedKph": 105
+  }'
+```
+
+查询驾驶月度报告：
+
+```bash
+curl "http://localhost:8084/api/driving-reports/vehicle/1/monthly?month=2026-11"
+```
+
+生成碳排报告。碳排服务会通过 Nacos 发现驾驶行为服务：
+
+```bash
+curl -X POST http://localhost:8085/api/carbon/reports \
+  -H "Content-Type: application/json" \
+  -d '{"vehicleId":1,"month":"2026-11"}'
+```
+
+查询碳排报告：
+
+```bash
+curl http://localhost:8085/api/carbon/reports/vehicle/1
+```
+
+## 配置
+
+| 环境变量 | 默认值 | 用途 |
+|---|---|---|
+| `NACOS_SERVER_ADDR` | `localhost:8848` | Nacos 地址 |
+| `MYSQL_USERNAME` | `root` | 新服务的数据库用户 |
+| `MYSQL_PASSWORD` | `12345678` | 新服务的数据库密码 |
+| `CARBON_GASOLINE_FACTOR` | `2.31` | 每升汽油的 CO₂ 千克数 |
+| `CARBON_GRID_FACTOR` | `0.581` | 每千瓦时电力的 CO₂ 千克数 |
+
+生产环境应通过本地 `.env` 或部署环境注入真实凭据，不应把真实密码提交到
+Git。第 07 周 Nacos 鉴权、初始化、上下线和截图说明将在后续按要求补充。

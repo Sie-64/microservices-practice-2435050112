@@ -1,0 +1,23 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: driving-behavior-service
+  datasource:
+    url: jdbc:mysql://mysql-driving:3306/driving_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:12345678}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_SERVER_ADDR:localhost:8848}
+        group: COURSE_GROUP
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

@@ -1,56 +1,193 @@
 services:
+  # ================= 服务注册中心 =================
+  nacos:
+    image: nacos/nacos-server:v2.3.2
+    environment:
+      MODE: standalone
+      NACOS_AUTH_ENABLE: "false"
+      JVM_XMS: 64m
+      JVM_XMX: 128m
+      JVM_XMN: 64m
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8848/nacos/v1/console/health/liveness"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 30s
+
   # ================= 3个独立数据库 =================
   mysql-user:
     image: mysql:8.4.11
+    command: ["--performance-schema=OFF", "--innodb-buffer-pool-size=64M"]
     environment:
       MYSQL_ROOT_PASSWORD: 12345678
       MYSQL_DATABASE: user_db
     volumes:
       - user_data:/var/lib/mysql
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
 
   mysql-vehicle:
     image: mysql:8.4.11
+    command: ["--performance-schema=OFF", "--innodb-buffer-pool-size=64M"]
     environment:
       MYSQL_ROOT_PASSWORD: 12345678
       MYSQL_DATABASE: vehicle_db
     volumes:
       - vehicle_data:/var/lib/mysql
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
 
   mysql-alert:
     image: mysql:8.4.11
+    command: ["--performance-schema=OFF", "--innodb-buffer-pool-size=64M"]
     environment:
       MYSQL_ROOT_PASSWORD: 12345678
       MYSQL_DATABASE: alert_db
     volumes:
       - alert_data:/var/lib/mysql
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
 
-  # ================= 3个独立微服务 =================
+  mysql-driving:
+    image: mysql:8.4.11
+    command: ["--performance-schema=OFF", "--innodb-buffer-pool-size=64M"]
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: driving_db
+    volumes:
+      - driving_data:/var/lib/mysql
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+
+  mysql-carbon:
+    image: mysql:8.4.11
+    command: ["--performance-schema=OFF", "--innodb-buffer-pool-size=64M"]
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: carbon_db
+    volumes:
+      - carbon_data:/var/lib/mysql
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+
+  # ================= 5个独立微服务 =================
   user-service:
     build: ./services/user-service
+    restart: on-failure
     ports:
       - "8081:8081"
     depends_on:
-      - mysql-user
+      mysql-user:
+        condition: service_healthy
+      nacos:
+        condition: service_healthy
+    environment:
+      NACOS_SERVER_ADDR: nacos:8848
+      JAVA_TOOL_OPTIONS: "-Xms64m -Xmx128m -XX:MaxMetaspaceSize=96m"
 
   vehicle-service:
     build: ./services/vehicle-service
+    restart: on-failure
     ports:
       - "8082:8082"
     depends_on:
-      - mysql-vehicle
+      mysql-vehicle:
+        condition: service_healthy
+      nacos:
+        condition: service_healthy
+    environment:
+      NACOS_SERVER_ADDR: nacos:8848
+      JAVA_TOOL_OPTIONS: "-Xms64m -Xmx128m -XX:MaxMetaspaceSize=96m"
 
   alert-service:
     build: ./services/alert-service
+    restart: on-failure
     ports:
       - "8083:8083"
     depends_on:
-      - mysql-alert
-      - vehicle-service
+      mysql-alert:
+        condition: service_healthy
+      vehicle-service:
+        condition: service_started
+      nacos:
+        condition: service_healthy
     environment:
       # 环境变量覆盖（老师要求），证明我们可以在 Docker 外部控制地址
       - VEHICLE_SERVICE_URL=http://vehicle-service:8082/api/vehicles
+      - NACOS_SERVER_ADDR=nacos:8848
+      - JAVA_TOOL_OPTIONS=-Xms64m -Xmx128m -XX:MaxMetaspaceSize=96m
+
+  driving-behavior-service:
+    build: ./services/driving-behavior-service
+    restart: on-failure
+    ports:
+      - "8084:8084"
+    depends_on:
+      mysql-driving:
+        condition: service_healthy
+      vehicle-service:
+        condition: service_started
+      nacos:
+        condition: service_healthy
+    environment:
+      NACOS_SERVER_ADDR: nacos:8848
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: "12345678"
+      JAVA_TOOL_OPTIONS: "-Xms64m -Xmx128m -XX:MaxMetaspaceSize=96m"
+
+  carbon-service:
+    build: ./services/carbon-service
+    restart: on-failure
+    ports:
+      - "8085:8085"
+    depends_on:
+      mysql-carbon:
+        condition: service_healthy
+      driving-behavior-service:
+        condition: service_started
+      nacos:
+        condition: service_healthy
+    environment:
+      NACOS_SERVER_ADDR: nacos:8848
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: "12345678"
+      CARBON_GASOLINE_FACTOR: "2.31"
+      CARBON_GRID_FACTOR: "0.581"
+      JAVA_TOOL_OPTIONS: "-Xms64m -Xmx128m -XX:MaxMetaspaceSize=96m"
 
 volumes:
   user_data:
   vehicle_data:
   alert_data:
+  driving_data:
+  carbon_data:

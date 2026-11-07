@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:carbon_test;MODE=MySQL;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+  cloud:
+    nacos:
+      discovery:
+        enabled: false
+carbon:
+  factors:
+    gasoline-kg-per-liter: 2.31
+    grid-kg-per-kwh: 0.581
