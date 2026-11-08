@@ -217,5 +217,36 @@ curl http://localhost:8085/api/carbon/reports/vehicle/1
 Git。`.env.example` 只包含占位值。详细部署和验证记录见
 [docs/homework/week-07/index.md](docs/homework/week-07/index.md)。
 
-运行截图应保存在 `docs/homework/week-07/screenshots/`，提交到作业系统时选择
-其中 1-5 张能够展示服务名、分组、实例 IP/端口以及上下线结果的图片。
+## 自动化测试与验证
+
+### 1. 健康检查脚本
+在仓库根目录执行以下命令一键检查 Nacos 控制台与所有微服务的健康状况：
+```bash
+bash scripts/smoke-test.sh
+markdown
+该脚本会检查 Nacos 控制台 (18080) 的 HTTP 可访问性，以及 5 个微服务的 /actuator/health 接口。只要任一项返回非 200 状态码，脚本就会立即打印错误并以非零状态码（exit 1）退出，防止将错误忽略。
+
+2. 服务发现与容错验证
+通过运行以下脚本，可以一键体验“正常调用 -> 服务下线报错 -> 服务恢复”的完整流程：
+
+bash
+bash scripts/verify-discovery.sh
+该脚本会自动创建测试车辆，并验证 alert-service 能否通过 Nacos 动态发现 vehicle-service。
+
+3. Nacos 服务列表查看
+启动所有业务服务后，请在浏览器访问控制台 http://localhost:18080/，登录后进入“服务管理” -> “服务列表”，即可查看 COURSE_GROUP 分组下的 5 个服务及其动态分配的实例 IP 与端口。
+
+4. 环境隔离测试
+各微服务的测试类均在 src/test 目录下，为了确保测试不依赖真实环境：
+
+测试配置中已强制关闭 Nacos 自动注册（spring.cloud.nacos.discovery.enabled=false）。
+
+使用 H2 内存数据库替代真实 MySQL。
+
+使用 Mockito 模拟远程响应。
+
+进入特定服务目录执行测试的命令如下：
+
+bash
+cd services/alert-service
+./mvnw test
