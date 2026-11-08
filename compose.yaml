@@ -1,243 +1,170 @@
-x-nacos-client-env: &nacos-client-env
-  NACOS_SERVER_ADDR: ${NACOS_SERVER_ADDR:-nacos:8848}
-  NACOS_USERNAME: ${NACOS_USERNAME:-nacos}
-  NACOS_PASSWORD: ${NACOS_PASSWORD:-}
-  NACOS_GROUP: ${NACOS_GROUP:-COURSE_GROUP}
-
 services:
-  # ================= 服务注册中心 =================
+  # ================= Nacos 注册中心 =================
   nacos:
     image: nacos/nacos-server:v3.2.4
+    platform: linux/amd64
+    container_name: nacos-standalone
     environment:
-      MODE: standalone
-      SPRING_DATASOURCE_PLATFORM: mysql
-      MYSQL_SERVICE_HOST: mysql-nacos
-      MYSQL_SERVICE_PORT: "3306"
-      MYSQL_SERVICE_DB_NAME: nacos
-      MYSQL_SERVICE_USER: ${MYSQL_NACOS_USER:-nacos}
-      MYSQL_SERVICE_PASSWORD: ${MYSQL_NACOS_PASSWORD:?Set MYSQL_NACOS_PASSWORD in .env}
-      MYSQL_SERVICE_DB_PARAM: characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
-      NACOS_AUTH_ENABLE: "true"
-      NACOS_AUTH_ADMIN_ENABLE: "true"
-      NACOS_AUTH_CONSOLE_ENABLE: "true"
-      NACOS_AUTH_SYSTEM_TYPE: nacos
-      NACOS_AUTH_TOKEN: ${NACOS_AUTH_TOKEN:?Set NACOS_AUTH_TOKEN in .env}
-      NACOS_AUTH_IDENTITY_KEY: ${NACOS_AUTH_IDENTITY_KEY:?Set NACOS_AUTH_IDENTITY_KEY in .env}
-      NACOS_AUTH_IDENTITY_VALUE: ${NACOS_AUTH_IDENTITY_VALUE:?Set NACOS_AUTH_IDENTITY_VALUE in .env}
-      JVM_XMS: 128m
-      JVM_XMX: 256m
-      JVM_XMN: 128m
+      - MODE=standalone
+      - NACOS_AUTH_ENABLE=true
+      - NACOS_AUTH_ADMIN_ENABLE=true
+      - NACOS_AUTH_CONSOLE_ENABLE=true
+      - NACOS_AUTH_SYSTEM_TYPE=nacos
+      - NACOS_AUTH_TOKEN=SecretKey012345678901234567890123456789012345678901234567890123456789
+      - NACOS_AUTH_IDENTITY_KEY=serverIdentity
+      - NACOS_AUTH_IDENTITY_VALUE=security
+      - JVM_XMS=128m
+      - JVM_XMX=256m
+      - JVM_XMN=64m
+      - JVM_MS=64m
+      - JVM_MMS=192m
     ports:
-      - "18080:8080"
-      - "8848:8848"
-      - "9848:9848"
-    restart: unless-stopped
-    depends_on:
-      mysql-nacos:
-        condition: service_healthy
+      - "18080:8080"  # 控制台
+      - "8848:8848"   # 服务端
+      - "9848:9848"   # gRPC
     volumes:
-      - nacos_server_data:/home/nacos/data
-      - nacos_server_logs:/home/nacos/logs
-    healthcheck:
-      test: ["CMD-SHELL", "curl -fsS http://localhost:8848/nacos/ >/dev/null && curl -fsS http://localhost:8080/next/ >/dev/null"]
-      interval: 5s
-      timeout: 5s
-      retries: 30
-      start_period: 90s
+      - nacos_data:/home/nacos/data
 
-  mysql-nacos:
-    image: mysql:8.4.11
-    command: ["--performance-schema=OFF", "--innodb-buffer-pool-size=64M"]
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
-      MYSQL_DATABASE: nacos
-      MYSQL_USER: ${MYSQL_NACOS_USER:-nacos}
-      MYSQL_PASSWORD: ${MYSQL_NACOS_PASSWORD:?Set MYSQL_NACOS_PASSWORD in .env}
-    volumes:
-      - nacos_mysql_data:/var/lib/mysql
-      - ./docker/nacos/mysql-schema.sql:/docker-entrypoint-initdb.d/01-nacos-schema.sql:ro
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
-      interval: 5s
-      timeout: 5s
-      retries: 30
-      start_period: 20s
-
-  # ================= 业务独立数据库 =================
+  # ================= 3个数据库 =================
   mysql-user:
     image: mysql:8.4.11
-    command: ["--performance-schema=OFF", "--innodb-buffer-pool-size=64M"]
+    command:
+      - --performance-schema=OFF
+      - --innodb-buffer-pool-size=32M
+      - --innodb-log-buffer-size=8M
+      - --max-connections=50
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
+      MYSQL_ROOT_PASSWORD: 12345678
       MYSQL_DATABASE: user_db
     volumes:
       - user_data:/var/lib/mysql
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
-      interval: 5s
-      timeout: 5s
-      retries: 30
-      start_period: 20s
 
   mysql-vehicle:
     image: mysql:8.4.11
-    command: ["--performance-schema=OFF", "--innodb-buffer-pool-size=64M"]
+    command:
+      - --performance-schema=OFF
+      - --innodb-buffer-pool-size=32M
+      - --innodb-log-buffer-size=8M
+      - --max-connections=50
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
+      MYSQL_ROOT_PASSWORD: 12345678
       MYSQL_DATABASE: vehicle_db
     volumes:
       - vehicle_data:/var/lib/mysql
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
-      interval: 5s
-      timeout: 5s
-      retries: 30
-      start_period: 20s
 
   mysql-alert:
     image: mysql:8.4.11
-    command: ["--performance-schema=OFF", "--innodb-buffer-pool-size=64M"]
+    command:
+      - --performance-schema=OFF
+      - --innodb-buffer-pool-size=32M
+      - --innodb-log-buffer-size=8M
+      - --max-connections=50
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
+      MYSQL_ROOT_PASSWORD: 12345678
       MYSQL_DATABASE: alert_db
     volumes:
       - alert_data:/var/lib/mysql
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
-      interval: 5s
-      timeout: 5s
-      retries: 30
-      start_period: 20s
 
   mysql-driving:
     image: mysql:8.4.11
-    command: ["--performance-schema=OFF", "--innodb-buffer-pool-size=64M"]
+    command:
+      - --performance-schema=OFF
+      - --innodb-buffer-pool-size=32M
+      - --innodb-log-buffer-size=8M
+      - --max-connections=50
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
+      MYSQL_ROOT_PASSWORD: 12345678
       MYSQL_DATABASE: driving_db
     volumes:
       - driving_data:/var/lib/mysql
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
-      interval: 5s
-      timeout: 5s
-      retries: 30
-      start_period: 20s
 
   mysql-carbon:
     image: mysql:8.4.11
-    command: ["--performance-schema=OFF", "--innodb-buffer-pool-size=64M"]
+    command:
+      - --performance-schema=OFF
+      - --innodb-buffer-pool-size=32M
+      - --innodb-log-buffer-size=8M
+      - --max-connections=50
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
+      MYSQL_ROOT_PASSWORD: 12345678
       MYSQL_DATABASE: carbon_db
     volumes:
       - carbon_data:/var/lib/mysql
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
-      interval: 5s
-      timeout: 5s
-      retries: 30
-      start_period: 20s
 
-  # ================= 5个独立微服务 =================
+  # ================= 5个微服务 =================
   user-service:
     build: ./services/user-service
-    restart: on-failure
     ports:
       - "8081:8081"
     depends_on:
-      mysql-user:
-        condition: service_healthy
-      nacos:
-        condition: service_healthy
+      - mysql-user
+      - nacos
     environment:
-      <<: *nacos-client-env
-      MYSQL_USERNAME: ${MYSQL_USERNAME:-root}
-      MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
-      JAVA_TOOL_OPTIONS: "-Xms64m -Xmx128m -XX:MaxMetaspaceSize=96m"
+      - NACOS_SERVER_ADDR=nacos:8848
+      - NACOS_USERNAME=nacos
+      - NACOS_PASSWORD=${NACOS_PASSWORD:-123456}
+      - MYSQL_PASSWORD=12345678
+      - JAVA_TOOL_OPTIONS=-Xms48m -Xmx128m -XX:MaxMetaspaceSize=96m -XX:ReservedCodeCacheSize=64m -XX:+UseSerialGC -Xss512k
 
   vehicle-service:
     build: ./services/vehicle-service
-    restart: on-failure
     ports:
       - "8082:8082"
     depends_on:
-      mysql-vehicle:
-        condition: service_healthy
-      nacos:
-        condition: service_healthy
+      - mysql-vehicle
+      - nacos
     environment:
-      <<: *nacos-client-env
-      MYSQL_USERNAME: ${MYSQL_USERNAME:-root}
-      MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
-      JAVA_TOOL_OPTIONS: "-Xms64m -Xmx128m -XX:MaxMetaspaceSize=96m"
+      - NACOS_SERVER_ADDR=nacos:8848
+      - NACOS_USERNAME=nacos
+      - NACOS_PASSWORD=${NACOS_PASSWORD:-123456}
+      - MYSQL_PASSWORD=12345678
+      - JAVA_TOOL_OPTIONS=-Xms48m -Xmx128m -XX:MaxMetaspaceSize=96m -XX:ReservedCodeCacheSize=64m -XX:+UseSerialGC -Xss512k
 
   alert-service:
     build: ./services/alert-service
-    restart: on-failure
     ports:
       - "8083:8083"
     depends_on:
-      mysql-alert:
-        condition: service_healthy
-      vehicle-service:
-        condition: service_started
-      nacos:
-        condition: service_healthy
+      - mysql-alert
+      - nacos
+      - vehicle-service
     environment:
-      <<: *nacos-client-env
-      MYSQL_USERNAME: ${MYSQL_USERNAME:-root}
-      MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
-      JAVA_TOOL_OPTIONS: "-Xms64m -Xmx128m -XX:MaxMetaspaceSize=96m"
+      - NACOS_SERVER_ADDR=nacos:8848
+      - NACOS_USERNAME=nacos
+      - NACOS_PASSWORD=${NACOS_PASSWORD:-123456}
+      - MYSQL_PASSWORD=12345678
+      - JAVA_TOOL_OPTIONS=-Xms48m -Xmx128m -XX:MaxMetaspaceSize=96m -XX:ReservedCodeCacheSize=64m -XX:+UseSerialGC -Xss512k
 
   driving-behavior-service:
     build: ./services/driving-behavior-service
-    restart: on-failure
     ports:
       - "8084:8084"
     depends_on:
-      mysql-driving:
-        condition: service_healthy
-      vehicle-service:
-        condition: service_started
-      nacos:
-        condition: service_healthy
+      - mysql-driving
+      - nacos
     environment:
-      <<: *nacos-client-env
-      MYSQL_USERNAME: ${MYSQL_USERNAME:-root}
-      MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
-      JAVA_TOOL_OPTIONS: "-Xms64m -Xmx128m -XX:MaxMetaspaceSize=96m"
+      - NACOS_SERVER_ADDR=nacos:8848
+      - NACOS_USERNAME=nacos
+      - NACOS_PASSWORD=${NACOS_PASSWORD:-123456}
+      - MYSQL_PASSWORD=12345678
+      - JAVA_TOOL_OPTIONS=-Xms48m -Xmx128m -XX:MaxMetaspaceSize=96m -XX:ReservedCodeCacheSize=64m -XX:+UseSerialGC -Xss512k
 
   carbon-service:
     build: ./services/carbon-service
-    restart: on-failure
     ports:
       - "8085:8085"
     depends_on:
-      mysql-carbon:
-        condition: service_healthy
-      driving-behavior-service:
-        condition: service_started
-      nacos:
-        condition: service_healthy
+      - mysql-carbon
+      - nacos
     environment:
-      <<: *nacos-client-env
-      MYSQL_USERNAME: ${MYSQL_USERNAME:-root}
-      MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
-      CARBON_GASOLINE_FACTOR: "2.31"
-      CARBON_GRID_FACTOR: "0.581"
-      JAVA_TOOL_OPTIONS: "-Xms64m -Xmx128m -XX:MaxMetaspaceSize=96m"
+      - NACOS_SERVER_ADDR=nacos:8848
+      - NACOS_USERNAME=nacos
+      - NACOS_PASSWORD=${NACOS_PASSWORD:-123456}
+      - MYSQL_PASSWORD=12345678
+      - JAVA_TOOL_OPTIONS=-Xms48m -Xmx128m -XX:MaxMetaspaceSize=96m -XX:ReservedCodeCacheSize=64m -XX:+UseSerialGC -Xss512k
 
 volumes:
-  nacos_mysql_data:
-  nacos_server_data:
-  nacos_server_logs:
+  nacos_data:
   user_data:
   vehicle_data:
   alert_data:

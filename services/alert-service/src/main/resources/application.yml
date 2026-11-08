@@ -1,5 +1,6 @@
 server:
   port: 8083
+
 spring:
   application:
     name: alert-service
@@ -7,17 +8,19 @@ spring:
     # 1. 连自己的数据库：mysql-alert 的 alert_db
     url: jdbc:mysql://mysql-alert:3306/alert_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
     username: ${MYSQL_USERNAME:root}
-    password: ${MYSQL_PASSWORD:}
+    password: ${MYSQL_PASSWORD:12345678} # 默认为 12345678，如果本地密码不同请修改
   jpa:
     hibernate:
       ddl-auto: update
   cloud:
     nacos:
       discovery:
+        # 从环境变量读取，默认值为 localhost:8848
         server-addr: ${NACOS_SERVER_ADDR:localhost:8848}
         group: ${NACOS_GROUP:COURSE_GROUP}
         username: ${NACOS_USERNAME:nacos}
-        password: ${NACOS_PASSWORD:}
+        password: ${NACOS_PASSWORD:nacos}
+
 management:
   endpoints:
     web:
