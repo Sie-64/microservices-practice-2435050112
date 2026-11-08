@@ -2,6 +2,7 @@ package com.zjgsu.zxy.alertservice.controller;
 
 import com.zjgsu.zxy.alertservice.dto.AlertRequest;
 import com.zjgsu.zxy.alertservice.entity.Alert;
+import com.zjgsu.zxy.alertservice.exception.ServiceUnavailableException;
 import com.zjgsu.zxy.alertservice.service.AlertService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,9 +29,8 @@ public class AlertController {
         } catch (IllegalArgumentException e) {
             // 校验失败返回 400
             return ResponseEntity.badRequest().body(e.getMessage());
-        } catch (Exception e) {
-            // 服务调用失败返回 500
-            return ResponseEntity.status(500).body(e.getMessage());
+        } catch (ServiceUnavailableException e) {
+            return ResponseEntity.status(503).body(e.getMessage());
         }
     }
 

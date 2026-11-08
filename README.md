@@ -28,20 +28,35 @@
 
 ## 启动
 
-需要 Docker Desktop 和 Java 17（本地测试使用）。在内存较小的 Docker
-Desktop 环境中，按“Nacos → 数据库 → 业务服务”的顺序启动，避免多个 JVM
-同时初始化造成资源竞争。
+需要 Docker Desktop、JDK 17 或更高版本、`curl` 和 `python3`。在内存较小的
+Docker Desktop 环境中，按“Nacos → 数据库 → 业务服务”的顺序启动，避免多个
+JVM 同时初始化造成资源竞争。首次启动时，应等 Nacos 初始化完成后再启动业务
+服务，否则注册请求会因 Nacos 尚未就绪而失败。
 
-先独立启动 Nacos：
+先准备本地环境变量。该步骤会生成 Nacos Token、Server identity 和数据库密码，
+写入被 `.gitignore` 排除的 `.env`：
 
 ```bash
-docker compose up -d nacos
+bash scripts/prepare-nacos-env.sh
+```
+
+独立启动 Nacos 的持久化 MySQL 和 Nacos 3.2.4：
+
+```bash
+docker compose up -d mysql-nacos nacos
 ```
 
 确认 Nacos 状态为 `healthy`：
 
 ```bash
 docker compose ps
+```
+
+首次初始化管理员 `nacos` 的密码。Nacos 生成的新密码会写回本地 `.env`，脚本可
+重复执行；已有有效凭据时不会再次重置密码：
+
+```bash
+bash scripts/init-nacos-admin.sh
 ```
 
 再启动五个数据库：
@@ -63,15 +78,29 @@ docker compose up -d carbon-service
 首次构建代码时，可对需要构建的服务增加 `--build`。在分配 8GB 以上内存的
 Docker Desktop 中，也可以使用 `docker compose up -d --build` 一次启动。
 
-Nacos 控制台：
+打开 Nacos 控制台：
 
 ```text
-http://localhost:8848/nacos/
+http://localhost:18080/
 ```
 
-当前 Nacos 为本地开发使用的 `standalone` 模式，业务服务在
-`http://localhost:8848` 注册。容器内地址由 `NACOS_SERVER_ADDR=nacos:8848`
-覆盖。
+Nacos 3 的端口职责：
+
+| 用途 | 宿主机端口 | 容器端口 |
+|---|---:|---:|
+| 控制台 | 18080 | 8080 |
+| 服务端 HTTP API | 8848 | 8848 |
+| SDK gRPC | 9848 | 9848 |
+
+业务服务通过容器网络地址 `nacos:8848` 连接 Nacos，统一使用 `COURSE_GROUP`
+分组。注册成功后，控制台的“服务管理 → 服务列表”应显示
+`user-service`、`vehicle-service`、`alert-service`、
+`driving-behavior-service` 和 `carbon-service`，实例地址由 Nacos 动态记录，
+不能在配置中写死。
+
+Nacos 配置数据保存在 MySQL 命名卷 `nacos_mysql_data`，服务端数据和日志分别
+保存在 `nacos_server_data`、`nacos_server_logs`。服务只引入课程 BOM 管理的
+Discovery Starter，本周不引入 Config Starter。
 
 停止服务但保留数据库和 Nacos 数据：
 
@@ -89,8 +118,18 @@ docker compose down
 bash scripts/smoke-test.sh
 ```
 
-脚本依次检查五个服务的 `/actuator/health`。任一服务返回非 200 时，脚本返回
-非零状态。
+脚本检查 Nacos 控制台和五个服务的健康接口。任一项返回非 200 时，脚本返回非零
+状态。
+
+验证正常调用、服务下线和恢复：
+
+```bash
+bash scripts/verify-discovery.sh
+```
+
+该脚本会创建一辆测试车辆，确认 `alert-service` 能通过 Nacos 找到
+`vehicle-service` 并返回 HTTP 200；随后短暂停止车辆服务，确认实例列表为空时
+返回 HTTP 503；最后自动恢复车辆服务，并再次验证 HTTP 200。
 
 ## 单元与上下文测试
 
@@ -156,11 +195,27 @@ curl http://localhost:8085/api/carbon/reports/vehicle/1
 
 | 环境变量 | 默认值 | 用途 |
 |---|---|---|
-| `NACOS_SERVER_ADDR` | `localhost:8848` | Nacos 地址 |
-| `MYSQL_USERNAME` | `root` | 新服务的数据库用户 |
-| `MYSQL_PASSWORD` | `12345678` | 新服务的数据库密码 |
+| `NACOS_SERVER_ADDR` | `nacos:8848` | Compose 中业务服务连接 Nacos 的地址 |
+| `NACOS_CONSOLE_URL` | `http://localhost:18080` | Nacos 控制台地址 |
+| `NACOS_USERNAME` | `nacos` | 服务注册使用的 Nacos 管理员 |
+| `NACOS_PASSWORD` | 无 | 初始化脚本写入本地 `.env` |
+| `NACOS_GROUP` | `COURSE_GROUP` | 所有业务服务使用的 Nacos 分组 |
+| `NACOS_AUTH_TOKEN` | 无 | Nacos JWT Token 密钥 |
+| `NACOS_AUTH_IDENTITY_KEY` | 无 | Nacos Server identity key |
+| `NACOS_AUTH_IDENTITY_VALUE` | 无 | Nacos Server identity value |
+| `MYSQL_NACOS_USER` | `nacos` | Nacos 持久化数据库用户 |
+| `MYSQL_NACOS_PASSWORD` | 无 | Nacos 持久化数据库密码 |
+| `MYSQL_ROOT_PASSWORD` | 无 | 五个业务数据库的 root 密码 |
+| `MYSQL_USERNAME` | `root` | 业务数据库用户 |
 | `CARBON_GASOLINE_FACTOR` | `2.31` | 每升汽油的 CO₂ 千克数 |
 | `CARBON_GRID_FACTOR` | `0.581` | 每千瓦时电力的 CO₂ 千克数 |
 
+如果把业务服务直接运行在宿主机而不是 Compose 中，应把
+`NACOS_SERVER_ADDR` 改为 `localhost:8848`。
+
 生产环境应通过本地 `.env` 或部署环境注入真实凭据，不应把真实密码提交到
-Git。第 07 周 Nacos 鉴权、初始化、上下线和截图说明将在后续按要求补充。
+Git。`.env.example` 只包含占位值。详细部署和验证记录见
+[docs/homework/week-07/index.md](docs/homework/week-07/index.md)。
+
+运行截图应保存在 `docs/homework/week-07/screenshots/`，提交到作业系统时选择
+其中 1-5 张能够展示服务名、分组、实例 IP/端口以及上下线结果的图片。

@@ -8,8 +8,8 @@ spring:
   datasource:
     # 把原来的 localhost 换成 mysql-db
     url: jdbc:mysql://mysql-db:3306/smart_car?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf8&allowPublicKeyRetrieval=true
-    username: root
-    password: 12345678 
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:}
   jpa:
     hibernate:
       ddl-auto: update   # 自动建表更新

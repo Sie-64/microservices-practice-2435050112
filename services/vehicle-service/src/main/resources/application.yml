@@ -5,8 +5,8 @@ spring:
     name: vehicle-service
   datasource:
     url: jdbc:mysql://mysql-vehicle:3306/vehicle_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
-    username: root
-    password: 12345678
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:}
   jpa:
     hibernate:
       ddl-auto: update
@@ -14,7 +14,9 @@ spring:
     nacos:
       discovery:
         server-addr: ${NACOS_SERVER_ADDR:localhost:8848}
-        group: COURSE_GROUP
+        group: ${NACOS_GROUP:COURSE_GROUP}
+        username: ${NACOS_USERNAME:nacos}
+        password: ${NACOS_PASSWORD:}
 management:
   endpoints:
     web:

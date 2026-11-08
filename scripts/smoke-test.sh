@@ -24,6 +24,7 @@ check_health "vehicle-service" "http://${HOST}:8082/actuator/health"
 check_health "alert-service" "http://${HOST}:8083/actuator/health"
 check_health "driving-behavior-service" "http://${HOST}:8084/actuator/health"
 check_health "carbon-service" "http://${HOST}:8085/actuator/health"
+check_health "nacos-console" "http://${HOST}:18080/next/"
 
 echo "健康检查执行完毕。"
 exit "$FAILED"
