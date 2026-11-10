@@ -1,34 +1,43 @@
 package com.zjgsu.zxy.alertservice.service;
 
+import com.zjgsu.zxy.alertservice.client.VehicleClient;
 import com.zjgsu.zxy.alertservice.entity.Alert;
-import com.zjgsu.zxy.alertservice.exception.ServiceUnavailableException;
 import com.zjgsu.zxy.alertservice.repository.AlertRepository;
 import org.junit.jupiter.api.Test;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.Mockito.mock;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
+@SpringBootTest
 class AlertServiceTest {
 
+    @Autowired
+    private AlertService alertService;
+
+    @MockBean
+    private AlertRepository alertRepository;
+
+    // 🎯 现在我们需要 Mock VehicleClient
+    @MockBean
+    private VehicleClient vehicleClient;
+
     @Test
-    void rejectsCreationWhenVehicleServiceHasNoInstance() {
-        AlertRepository repository = mock(AlertRepository.class);
-        DiscoveryClient discoveryClient = mock(DiscoveryClient.class);
-        when(discoveryClient.getInstances("vehicle-service")).thenReturn(List.of());
-        AlertService service =
-                new AlertService(repository, new RestTemplate(), discoveryClient);
+    void testCreateAlert_NoInstances_ShouldThrowException() {
+        // 模拟 Feign 调用时，车辆服务不可用抛出异常
+        when(vehicleClient.getVehicleById(any())).thenThrow(new RuntimeException("车辆服务不可用，已触发降级：无法校验车辆信息"));
+
         Alert alert = new Alert();
         alert.setVehicleId(1L);
-        alert.setAlertType("battery");
+        alert.setAlertType("碰撞");
         alert.setLevel(1);
 
-        assertThatThrownBy(() -> service.createAlert(alert))
-                .isInstanceOf(ServiceUnavailableException.class)
-                .hasMessageContaining("vehicle-service");
+        // 验证是否抛出了异常
+        assertThrows(IllegalArgumentException.class, () -> {
+            alertService.createAlert(alert);
+        });
     }
 }

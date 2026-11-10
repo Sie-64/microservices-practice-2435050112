@@ -20,6 +20,10 @@ spring:
         group: ${NACOS_GROUP:COURSE_GROUP}
         username: ${NACOS_USERNAME:nacos}
         password: ${NACOS_PASSWORD:nacos}
+    openfeign:
+      circuitbreaker:
+        enabled: true
+
 
 management:
   endpoints:
