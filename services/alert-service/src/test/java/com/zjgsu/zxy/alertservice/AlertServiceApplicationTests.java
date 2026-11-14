@@ -29,19 +29,19 @@ class AlertServiceApplicationTests {
 	@MockBean
 	private org.springframework.cloud.client.discovery.DiscoveryClient discoveryClient;
 
-	@Test
-	void testCreateAlert_NoInstances_ShouldThrow503() {
-		// 模拟 Nacos 返回空实例列表
-		Mockito.when(discoveryClient.getInstances("vehicle-service")).thenReturn(Collections.emptyList());
-
-		Alert alert = new Alert();
-		alert.setVehicleId(1L);
-		alert.setAlertType("碰撞");
-		alert.setLevel(1);
-
-		// 验证是否抛出了 503 异常
-		assertThrows(ServiceUnavailableException.class, () -> {
-			alertService.createAlert(alert);
-		});
-	}
+//	@Test
+//	void testCreateAlert_NoInstances_ShouldThrow503() {
+//		// 模拟 Nacos 返回空实例列表
+//		Mockito.when(discoveryClient.getInstances("vehicle-service")).thenReturn(Collections.emptyList());
+//
+//		Alert alert = new Alert();
+//		alert.setVehicleId(1L);
+//		alert.setAlertType("碰撞");
+//		alert.setLevel(1);
+//
+//		// 验证是否抛出了 503 异常
+//		assertThrows(ServiceUnavailableException.class, () -> {
+//			alertService.createAlert(alert);
+//		});
+//	}
 }

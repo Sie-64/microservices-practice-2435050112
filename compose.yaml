@@ -6,26 +6,31 @@ services:
     container_name: nacos-standalone
     environment:
       - MODE=standalone
-      - NACOS_AUTH_ENABLE=true
-      - NACOS_AUTH_ADMIN_ENABLE=true
-      - NACOS_AUTH_CONSOLE_ENABLE=true
-      - NACOS_AUTH_SYSTEM_TYPE=nacos
-      - NACOS_AUTH_TOKEN=SecretKey012345678901234567890123456789012345678901234567890123456789
-      - NACOS_AUTH_IDENTITY_KEY=serverIdentity
-      - NACOS_AUTH_IDENTITY_VALUE=security
-      - JVM_XMS=128m
+      # Nacos 3.x 的启动脚本即使关闭鉴权，也要求 token 存在。
+      - NACOS_AUTH_ENABLE=false
+      - NACOS_AUTH_TOKEN=${NACOS_AUTH_TOKEN:-VGhpc0lzQVNlY3JldEtleUZvck5hY29zQXV0aGVudGljYXRpb24xMjM0NTY=}
+      - NACOS_AUTH_IDENTITY_KEY=${NACOS_AUTH_IDENTITY_KEY:-serverIdentity}
+      - NACOS_AUTH_IDENTITY_VALUE=${NACOS_AUTH_IDENTITY_VALUE:-security}
+      # Nacos 3 的 Console/Admin 鉴权是独立开关，镜像配置默认开启。
+      # Nacos 3.2.4 新版 Control UI 存在 React removeChild 前端异常，默认使用稳定旧版界面。
+      - JAVA_OPT_EXT=--nacos.core.auth.admin.enabled=false --nacos.core.auth.console.enabled=false --nacos.console.ui.default=legacy
+      - JVM_XMS=256m
       - JVM_XMX=256m
-      - JVM_XMN=64m
-      - JVM_MS=64m
-      - JVM_MMS=192m
+      - JVM_XMN=128m
     ports:
-      - "18080:8080"  # 控制台
-      - "8848:8848"   # 服务端
-      - "9848:9848"   # gRPC
+      - "18080:8080"
+      - "8848:8848"
+      - "9848:9848"
     volumes:
       - nacos_data:/home/nacos/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8848/nacos/v1/ns/operator/metrics || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+      start_period: 30s
 
-  # ================= 3个数据库 =================
+  # ================= 5个数据库 =================
   mysql-user:
     image: mysql:8.4.11
     command:
@@ -91,78 +96,106 @@ services:
     volumes:
       - carbon_data:/var/lib/mysql
 
-  # ================= 5个微服务 =================
+  # ================= 微服务 =================
+
+  # 用户服务
   user-service:
     build: ./services/user-service
     ports:
       - "8081:8081"
     depends_on:
-      - mysql-user
-      - nacos
+      mysql-user:
+        condition: service_started
+      nacos:
+        condition: service_healthy
     environment:
       - NACOS_SERVER_ADDR=nacos:8848
-      - NACOS_USERNAME=nacos
-      - NACOS_PASSWORD=${NACOS_PASSWORD:-123456}
       - MYSQL_PASSWORD=12345678
       - JAVA_TOOL_OPTIONS=-Xms48m -Xmx128m -XX:MaxMetaspaceSize=96m -XX:ReservedCodeCacheSize=64m -XX:+UseSerialGC -Xss512k
 
-  vehicle-service:
+  # 🎯 车辆服务实例 1 (负载均衡节点 A)
+  vehicle-service-1:
     build: ./services/vehicle-service
     ports:
       - "8082:8082"
     depends_on:
-      - mysql-vehicle
-      - nacos
+      mysql-vehicle:
+        condition: service_started
+      nacos:
+        condition: service_healthy
     environment:
       - NACOS_SERVER_ADDR=nacos:8848
-      - NACOS_USERNAME=nacos
-      - NACOS_PASSWORD=${NACOS_PASSWORD:-123456}
       - MYSQL_PASSWORD=12345678
+      - INSTANCE_NAME=vehicle-1
       - JAVA_TOOL_OPTIONS=-Xms48m -Xmx128m -XX:MaxMetaspaceSize=96m -XX:ReservedCodeCacheSize=64m -XX:+UseSerialGC -Xss512k
 
+  # 🎯 车辆服务实例 2 (负载均衡节点 B，外部端口 8086)
+  vehicle-service-2:
+    build: ./services/vehicle-service
+    ports:
+      - "8086:8082"
+    depends_on:
+      mysql-vehicle:
+        condition: service_started
+      nacos:
+        condition: service_healthy
+    environment:
+      - NACOS_SERVER_ADDR=nacos:8848
+      - MYSQL_PASSWORD=12345678
+      - INSTANCE_NAME=vehicle-2
+      - JAVA_TOOL_OPTIONS=-Xms48m -Xmx128m -XX:MaxMetaspaceSize=96m -XX:ReservedCodeCacheSize=64m -XX:+UseSerialGC -Xss512k
+
+  # 告警服务 (调用方)
   alert-service:
     build: ./services/alert-service
     ports:
       - "8083:8083"
     depends_on:
-      - mysql-alert
-      - nacos
-      - vehicle-service
+      mysql-alert:
+        condition: service_started
+      nacos:
+        condition: service_healthy
+      vehicle-service-1:
+        condition: service_started
+      vehicle-service-2:
+        condition: service_started
     environment:
       - NACOS_SERVER_ADDR=nacos:8848
-      - NACOS_USERNAME=nacos
-      - NACOS_PASSWORD=${NACOS_PASSWORD:-123456}
       - MYSQL_PASSWORD=12345678
+      - SPRING_CLOUD_OPENFEIGN_CIRCUITBREAKER_ENABLED=true
       - JAVA_TOOL_OPTIONS=-Xms48m -Xmx128m -XX:MaxMetaspaceSize=96m -XX:ReservedCodeCacheSize=64m -XX:+UseSerialGC -Xss512k
 
+  # 驾驶行为服务
   driving-behavior-service:
     build: ./services/driving-behavior-service
     ports:
       - "8084:8084"
     depends_on:
-      - mysql-driving
-      - nacos
+      mysql-driving:
+        condition: service_started
+      nacos:
+        condition: service_healthy
     environment:
       - NACOS_SERVER_ADDR=nacos:8848
-      - NACOS_USERNAME=nacos
-      - NACOS_PASSWORD=${NACOS_PASSWORD:-123456}
       - MYSQL_PASSWORD=12345678
       - JAVA_TOOL_OPTIONS=-Xms48m -Xmx128m -XX:MaxMetaspaceSize=96m -XX:ReservedCodeCacheSize=64m -XX:+UseSerialGC -Xss512k
 
+  # 碳排服务
   carbon-service:
     build: ./services/carbon-service
     ports:
       - "8085:8085"
     depends_on:
-      - mysql-carbon
-      - nacos
+      mysql-carbon:
+        condition: service_started
+      nacos:
+        condition: service_healthy
     environment:
       - NACOS_SERVER_ADDR=nacos:8848
-      - NACOS_USERNAME=nacos
-      - NACOS_PASSWORD=${NACOS_PASSWORD:-123456}
       - MYSQL_PASSWORD=12345678
       - JAVA_TOOL_OPTIONS=-Xms48m -Xmx128m -XX:MaxMetaspaceSize=96m -XX:ReservedCodeCacheSize=64m -XX:+UseSerialGC -Xss512k
 
+# 数据卷声明
 volumes:
   nacos_data:
   user_data:

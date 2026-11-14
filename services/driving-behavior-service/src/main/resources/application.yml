@@ -16,8 +16,6 @@ spring:
       discovery:
         server-addr: ${NACOS_SERVER_ADDR:localhost:8848}
         group: ${NACOS_GROUP:COURSE_GROUP}
-        username: ${NACOS_USERNAME:nacos}
-        password: ${NACOS_PASSWORD:}
 management:
   endpoints:
     web:

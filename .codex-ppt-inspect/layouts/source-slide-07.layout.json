@@ -1,0 +1,1671 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/gnmp4jqx",
+    "id": "gnmp4jqx",
+    "slide": 7,
+    "layoutId": "/ppt/slideLayouts/slideLayout1.xml",
+    "layoutName": "DEFAULT",
+    "masterLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+    "backgroundColor": "#EEF8FD",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "Office",
+    "colors": {
+      "accent1": "#4472C4",
+      "accent2": "#ED7D31",
+      "accent3": "#A5A5A5",
+      "accent4": "#FFC000",
+      "accent5": "#5B9BD5",
+      "accent6": "#70AD47",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#44546A",
+      "lt2": "#E7E6E6",
+      "hlink": "#0563C1",
+      "folHlink": "#954F72"
+    },
+    "fontScheme": {
+      "name": "Office",
+      "majorFont": {
+        "latinTypeface": "Hiragino Sans GB"
+      },
+      "minorFont": {
+        "latinTypeface": "Hiragino Sans GB"
+      }
+    },
+    "typefaces": [
+      "Hiragino Sans GB"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "/ppt/slideLayouts/slideLayout1.xml",
+      "name": "DEFAULT",
+      "parentLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "/ppt/slideMasters/slideMaster1.xml",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/cb2tkvap",
+      "id": "2",
+      "name": "Text 0",
+      "bbox": [
+        67.2,
+        680.64,
+        403.2,
+        19.2
+      ],
+      "geometry": "rect",
+      "text": "智驾伴侣 · 期中项目汇报",
+      "textPreview": "智驾伴侣 · 期中项目汇报",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "智驾伴侣 · 期中项目汇报"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "智驾伴侣 · 期中项目汇报",
+          "runs": [
+            {
+              "index": 1,
+              "text": "智驾伴侣 · 期中项目汇报",
+              "fontSize": 12,
+              "typeface": "Hiragino Sans GB",
+              "color": "#8BA2B2"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/dcbud0ra",
+      "id": "3",
+      "name": "Text 1",
+      "bbox": [
+        1105.92,
+        675.84,
+        107.52,
+        24.96
+      ],
+      "geometry": "rect",
+      "text": "07 / 09",
+      "textPreview": "07 / 09",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "07 / 09"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "07 / 09",
+          "resolvedTextStyle": {
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "07 / 09",
+              "fontSize": 12,
+              "typeface": "Hiragino Sans GB",
+              "color": "#6D8799"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ydkbm5sv",
+      "id": "4",
+      "name": "Text 2",
+      "bbox": [
+        65.28,
+        46.08,
+        67.2,
+        30.72
+      ],
+      "geometry": "rect",
+      "text": "04",
+      "textPreview": "04",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "04"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "04",
+          "runs": [
+            {
+              "index": 1,
+              "text": "04",
+              "fontSize": 14.67,
+              "typeface": "Hiragino Sans GB",
+              "color": "#2F7DBB",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/zedcfa9g",
+      "id": "5",
+      "name": "Text 3",
+      "bbox": [
+        118.08,
+        45.12,
+        268.8,
+        30.72
+      ],
+      "geometry": "rect",
+      "text": "CHALLENGES",
+      "textPreview": "CHALLENGES",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "CHALLENGES"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "CHALLENGES",
+          "runs": [
+            {
+              "index": 1,
+              "text": "CHALLENGES",
+              "fontSize": 16,
+              "typeface": "Hiragino Sans GB",
+              "color": "#2E97A3",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/kzmdova1",
+      "id": "6",
+      "name": "Text 4",
+      "bbox": [
+        65.28,
+        79.68,
+        1046.4,
+        59.52
+      ],
+      "geometry": "rect",
+      "text": "遇到的挑战与解决方案",
+      "textPreview": "遇到的挑战与解决方案",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "遇到的挑战与解决方案"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "遇到的挑战与解决方案",
+          "runs": [
+            {
+              "index": 1,
+              "text": "遇到的挑战与解决方案",
+              "fontSize": 38.67,
+              "typeface": "Hiragino Sans GB",
+              "color": "#0B2846",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/l0vuh0rm",
+      "id": "7",
+      "name": "Text 5",
+      "bbox": [
+        816,
+        122.88,
+        398.4,
+        34.56
+      ],
+      "geometry": "rect",
+      "text": "先定位边界，再恢复业务闭环",
+      "textPreview": "先定位边界，再恢复业务闭环",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "先定位边界，再恢复业务闭环"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "先定位边界，再恢复业务闭环",
+          "resolvedTextStyle": {
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "先定位边界，再恢复业务闭环",
+              "fontSize": 16,
+              "typeface": "Hiragino Sans GB",
+              "color": "#627A8D"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/eh0ba1sr",
+      "id": "8",
+      "name": "Text 6",
+      "bbox": [
+        67.2,
+        139.2,
+        48,
+        28.8
+      ],
+      "geometry": "rect",
+      "text": "01",
+      "textPreview": "01",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "01"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "01",
+          "runs": [
+            {
+              "index": 1,
+              "text": "01",
+              "fontSize": 14,
+              "typeface": "Hiragino Sans GB",
+              "color": "#71B9E6",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fi9c369c",
+      "id": "9",
+      "name": "Text 7",
+      "bbox": [
+        115.2,
+        134.4,
+        698.88,
+        36.48
+      ],
+      "geometry": "rect",
+      "text": "版本兼容性冲突",
+      "textPreview": "版本兼容性冲突",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "版本兼容性冲突"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "版本兼容性冲突",
+          "runs": [
+            {
+              "index": 1,
+              "text": "版本兼容性冲突",
+              "fontSize": 22.67,
+              "typeface": "Hiragino Sans GB",
+              "color": "#0B2846",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/baxkjqlk",
+      "id": "10",
+      "name": "Text 8",
+      "bbox": [
+        115.2,
+        177.6,
+        698.88,
+        30.72
+      ],
+      "geometry": "rect",
+      "text": "现象  Spring Boot 4 与 Spring Cloud Alibaba 版本不匹配，服务无法连接。",
+      "textPreview": "现象  Spring Boot 4 与 Spring Cloud Alibaba 版本不匹配，服务无法连接。",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "现象  Spring Boot 4 与 Spring Cloud Alibaba 版本不匹配，服务无法连接。"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "现象  Spring Boot 4 与 Spring Cloud Alibaba 版本不匹配，服务无法连接。",
+          "runs": [
+            {
+              "index": 1,
+              "text": "现象  Spring Boot 4 与 Spring Cloud Alibaba 版本不匹配，服务无法连接。",
+              "fontSize": 16,
+              "typeface": "Hiragino Sans GB",
+              "color": "#627A8D"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/a9ojq5kz",
+      "id": "11",
+      "name": "Text 9",
+      "bbox": [
+        115.2,
+        212.16,
+        698.88,
+        46.08
+      ],
+      "geometry": "rect",
+      "text": "解决  统一为 Spring Boot 3.2.x、Java 17 与 SCA 2023.0.1.0。",
+      "textPreview": "解决  统一为 Spring Boot 3.2.x、Java 17 与 SCA 2023.0.1.0。",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "解决  统一为 Spring Boot 3.2.x、Java 17 与 SCA 2023.0.1.0。"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "解决  统一为 Spring Boot 3.2.x、Java 17 与 SCA 2023.0.1.0。",
+          "lineSpacingPercent": 108000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "解决  统一为 Spring Boot 3.2.x、Java 17 与 SCA 2023.0.1.0。",
+              "fontSize": 16.67,
+              "typeface": "Hiragino Sans GB",
+              "color": "#1D5E8C",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xcz2l03q",
+      "id": "12",
+      "name": "Shape 10",
+      "bbox": [
+        67.2,
+        267.84,
+        753.6,
+        0
+      ],
+      "geometry": "line",
+      "lineColor": "#C4DEEB",
+      "lineWidth": 1.07
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/cbq1sv25",
+      "id": "13",
+      "name": "Text 11",
+      "bbox": [
+        67.2,
+        294.72,
+        48,
+        28.8
+      ],
+      "geometry": "rect",
+      "text": "02",
+      "textPreview": "02",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "02"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "02",
+          "runs": [
+            {
+              "index": 1,
+              "text": "02",
+              "fontSize": 14,
+              "typeface": "Hiragino Sans GB",
+              "color": "#71B9E6",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/n6x0fqlo",
+      "id": "14",
+      "name": "Text 12",
+      "bbox": [
+        115.2,
+        289.92,
+        698.88,
+        36.48
+      ],
+      "geometry": "rect",
+      "text": "Nacos 3 端口与路径变化",
+      "textPreview": "Nacos 3 端口与路径变化",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Nacos 3 端口与路径变化"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Nacos 3 端口与路径变化",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Nacos 3 端口与路径变化",
+              "fontSize": 22.67,
+              "typeface": "Hiragino Sans GB",
+              "color": "#0B2846",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/25ojml43",
+      "id": "15",
+      "name": "Text 13",
+      "bbox": [
+        115.2,
+        333.12,
+        698.88,
+        30.72
+      ],
+      "geometry": "rect",
+      "text": "现象  访问 8848 控制台返回空响应。",
+      "textPreview": "现象  访问 8848 控制台返回空响应。",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "现象  访问 8848 控制台返回空响应。"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "现象  访问 8848 控制台返回空响应。",
+          "runs": [
+            {
+              "index": 1,
+              "text": "现象  访问 8848 控制台返回空响应。",
+              "fontSize": 16,
+              "typeface": "Hiragino Sans GB",
+              "color": "#627A8D"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p8fih03e",
+      "id": "16",
+      "name": "Text 14",
+      "bbox": [
+        115.2,
+        367.68,
+        698.88,
+        46.08
+      ],
+      "geometry": "rect",
+      "text": "解决  控制台使用 18080，SDK 使用 8848 / 9848，并通过环境变量隔离。",
+      "textPreview": "解决  控制台使用 18080，SDK 使用 8848 / 9848，并通过环境变量隔离。",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "解决  控制台使用 18080，SDK 使用 8848 / 9848，并通过环境变量隔离。"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "解决  控制台使用 18080，SDK 使用 8848 / 9848，并通过环境变量隔离。",
+          "lineSpacingPercent": 108000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "解决  控制台使用 18080，SDK 使用 8848 / 9848，并通过环境变量隔离。",
+              "fontSize": 16.67,
+              "typeface": "Hiragino Sans GB",
+              "color": "#1D5E8C",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/o761ov2t",
+      "id": "17",
+      "name": "Shape 15",
+      "bbox": [
+        67.2,
+        423.36,
+        753.6,
+        0
+      ],
+      "geometry": "line",
+      "lineColor": "#C4DEEB",
+      "lineWidth": 1.07
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/f2d0b6lc",
+      "id": "18",
+      "name": "Text 16",
+      "bbox": [
+        67.2,
+        450.24,
+        48,
+        28.8
+      ],
+      "geometry": "rect",
+      "text": "03",
+      "textPreview": "03",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "03"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "03",
+          "runs": [
+            {
+              "index": 1,
+              "text": "03",
+              "fontSize": 14,
+              "typeface": "Hiragino Sans GB",
+              "color": "#D98B36",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 18,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/eh4jil4r",
+      "id": "19",
+      "name": "Text 17",
+      "bbox": [
+        115.2,
+        445.44,
+        698.88,
+        36.48
+      ],
+      "geometry": "rect",
+      "text": "跨服务依赖失败产生脏数据风险",
+      "textPreview": "跨服务依赖失败产生脏数据风险",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "跨服务依赖失败产生脏数据风险"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "跨服务依赖失败产生脏数据风险",
+          "runs": [
+            {
+              "index": 1,
+              "text": "跨服务依赖失败产生脏数据风险",
+              "fontSize": 22.67,
+              "typeface": "Hiragino Sans GB",
+              "color": "#0B2846",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 19,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/id4ju1oz",
+      "id": "20",
+      "name": "Text 18",
+      "bbox": [
+        115.2,
+        488.64,
+        698.88,
+        30.72
+      ],
+      "geometry": "rect",
+      "text": "现象  依赖服务不可用时，请求可能绕过业务校验。",
+      "textPreview": "现象  依赖服务不可用时，请求可能绕过业务校验。",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "现象  依赖服务不可用时，请求可能绕过业务校验。"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "现象  依赖服务不可用时，请求可能绕过业务校验。",
+          "runs": [
+            {
+              "index": 1,
+              "text": "现象  依赖服务不可用时，请求可能绕过业务校验。",
+              "fontSize": 16,
+              "typeface": "Hiragino Sans GB",
+              "color": "#627A8D"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 20,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/jedkn654",
+      "id": "21",
+      "name": "Text 19",
+      "bbox": [
+        115.2,
+        523.2,
+        698.88,
+        46.08
+      ],
+      "geometry": "rect",
+      "text": "解决  增加实例空判断并返回 503；车辆不存在返回 400，阻断落库。",
+      "textPreview": "解决  增加实例空判断并返回 503；车辆不存在返回 400，阻断落库。",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "解决  增加实例空判断并返回 503；车辆不存在返回 400，阻断落库。"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "解决  增加实例空判断并返回 503；车辆不存在返回 400，阻断落库。",
+          "lineSpacingPercent": 108000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "解决  增加实例空判断并返回 503；车辆不存在返回 400，阻断落库。",
+              "fontSize": 16.67,
+              "typeface": "Hiragino Sans GB",
+              "color": "#1D5E8C",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 21,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4fm1wb6p",
+      "id": "22",
+      "name": "Shape 20",
+      "bbox": [
+        67.2,
+        578.88,
+        753.6,
+        0
+      ],
+      "geometry": "line",
+      "lineColor": "#C4DEEB",
+      "lineWidth": 1.07
+    },
+    {
+      "order": 22,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/50v2pgna",
+      "id": "23",
+      "name": "Text 21",
+      "bbox": [
+        879.36,
+        136.32,
+        144,
+        26.88
+      ],
+      "geometry": "rect",
+      "text": "运行证据",
+      "textPreview": "运行证据",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "运行证据"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "运行证据",
+          "runs": [
+            {
+              "index": 1,
+              "text": "运行证据",
+              "fontSize": 14,
+              "typeface": "Hiragino Sans GB",
+              "color": "#2E97A3",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 23,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/q143ylov",
+      "id": "24",
+      "name": "Shape 22",
+      "bbox": [
+        877.44,
+        170.88,
+        334.08,
+        165.12
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#F8FCFE",
+      "lineColor": "#C4DEEB",
+      "lineWidth": 1.33
+    },
+    {
+      "order": 24,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/wbylkfmp",
+      "id": "32",
+      "name": "Image 0",
+      "bbox": [
+        886.08,
+        181.44,
+        316.8,
+        141.12
+      ],
+      "contentType": "image/png",
+      "imageCrop": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "asset": {
+        "assetId": "/ppt/media/image-7-1.png",
+        "contentType": "image/png",
+        "byteLength": 152745
+      },
+      "fillImage": {
+        "assetId": "/ppt/media/image-7-1.png",
+        "contentType": "image/png",
+        "byteLength": 152745
+      }
+    },
+    {
+      "order": 25,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/s3ml0v61",
+      "id": "26",
+      "name": "Text 23",
+      "bbox": [
+        881.28,
+        339.84,
+        328.32,
+        28.8
+      ],
+      "geometry": "rect",
+      "text": "vehicle-service 下线后返回 503",
+      "textPreview": "vehicle-service 下线后返回 503",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "vehicle-service 下线后返回 503"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "vehicle-service 下线后返回 503",
+          "resolvedTextStyle": {
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "vehicle-service 下线后返回 503",
+              "fontSize": 14,
+              "typeface": "Hiragino Sans GB",
+              "color": "#627A8D"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 26,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/d4f2t0nm",
+      "id": "27",
+      "name": "Text 24",
+      "bbox": [
+        881.28,
+        391.68,
+        144,
+        26.88
+      ],
+      "geometry": "rect",
+      "text": "验证链路",
+      "textPreview": "验证链路",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "验证链路"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "验证链路",
+          "runs": [
+            {
+              "index": 1,
+              "text": "验证链路",
+              "fontSize": 14,
+              "typeface": "Hiragino Sans GB",
+              "color": "#2F7DBB",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 27,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/e5o32lor",
+      "id": "28",
+      "name": "Text 25",
+      "bbox": [
+        883.2,
+        430.08,
+        321.6,
+        19.2
+      ],
+      "geometry": "rect",
+      "text": "正常 200",
+      "textPreview": "正常 200",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "正常 200"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "正常 200",
+          "runs": [
+            {
+              "index": 1,
+              "text": "正常 200",
+              "fontSize": 16,
+              "typeface": "Hiragino Sans GB",
+              "color": "#2E97A3",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 28,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/f6xkvq5c",
+      "id": "29",
+      "name": "Text 26",
+      "bbox": [
+        883.2,
+        467.52,
+        321.6,
+        19.2
+      ],
+      "geometry": "rect",
+      "text": "实例下线 503",
+      "textPreview": "实例下线 503",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "实例下线 503"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "实例下线 503",
+          "runs": [
+            {
+              "index": 1,
+              "text": "实例下线 503",
+              "fontSize": 16,
+              "typeface": "Hiragino Sans GB",
+              "color": "#D98B36",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 29,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p0zmlk7u",
+      "id": "30",
+      "name": "Text 27",
+      "bbox": [
+        883.2,
+        504.96,
+        321.6,
+        19.2
+      ],
+      "geometry": "rect",
+      "text": "恢复后 200",
+      "textPreview": "恢复后 200",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "恢复后 200"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "恢复后 200",
+          "runs": [
+            {
+              "index": 1,
+              "text": "恢复后 200",
+              "fontSize": 16,
+              "typeface": "Hiragino Sans GB",
+              "color": "#2E97A3",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 30,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ozq5szq9",
+      "id": "31",
+      "name": "Text 28",
+      "bbox": [
+        883.2,
+        556.8,
+        318.72,
+        55.68
+      ],
+      "geometry": "rect",
+      "text": "请求在失败阶段被拦截，没有形成无效告警记录。",
+      "textPreview": "请求在失败阶段被拦截，没有形成无效告警记录。",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Hiragino Sans GB",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "请求在失败阶段被拦截，没有形成无效告警记录。"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "请求在失败阶段被拦截，没有形成无效告警记录。",
+          "lineSpacingPercent": 110000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "请求在失败阶段被拦截，没有形成无效告警记录。",
+              "fontSize": 14.27,
+              "typeface": "Hiragino Sans GB",
+              "color": "#29485F"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    }
+  ],
+  "composeRuns": []
+}

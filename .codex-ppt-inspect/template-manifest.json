@@ -1,0 +1,183 @@
+{
+  "sourcePptx": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-build/source-compatible.pptx",
+  "workspace": "/Users/zhouyiming/Documents/work/micro_lesson/lesson",
+  "outDir": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect",
+  "generatedAt": "2026-11-10T11:27:05.648Z",
+  "slideCount": 9,
+  "slideArtifacts": [
+    {
+      "slide": 1,
+      "previewPath": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/source-slides/source-slide-01.png",
+      "previewRelativePath": ".codex-ppt-inspect/source-slides/source-slide-01.png",
+      "layoutPath": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/layouts/source-slide-01.layout.json",
+      "layoutRelativePath": ".codex-ppt-inspect/layouts/source-slide-01.layout.json"
+    },
+    {
+      "slide": 2,
+      "previewPath": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/source-slides/source-slide-02.png",
+      "previewRelativePath": ".codex-ppt-inspect/source-slides/source-slide-02.png",
+      "layoutPath": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/layouts/source-slide-02.layout.json",
+      "layoutRelativePath": ".codex-ppt-inspect/layouts/source-slide-02.layout.json"
+    },
+    {
+      "slide": 3,
+      "previewPath": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/source-slides/source-slide-03.png",
+      "previewRelativePath": ".codex-ppt-inspect/source-slides/source-slide-03.png",
+      "layoutPath": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/layouts/source-slide-03.layout.json",
+      "layoutRelativePath": ".codex-ppt-inspect/layouts/source-slide-03.layout.json"
+    },
+    {
+      "slide": 4,
+      "previewPath": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/source-slides/source-slide-04.png",
+      "previewRelativePath": ".codex-ppt-inspect/source-slides/source-slide-04.png",
+      "layoutPath": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/layouts/source-slide-04.layout.json",
+      "layoutRelativePath": ".codex-ppt-inspect/layouts/source-slide-04.layout.json"
+    },
+    {
+      "slide": 5,
+      "previewPath": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/source-slides/source-slide-05.png",
+      "previewRelativePath": ".codex-ppt-inspect/source-slides/source-slide-05.png",
+      "layoutPath": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/layouts/source-slide-05.layout.json",
+      "layoutRelativePath": ".codex-ppt-inspect/layouts/source-slide-05.layout.json"
+    },
+    {
+      "slide": 6,
+      "previewPath": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/source-slides/source-slide-06.png",
+      "previewRelativePath": ".codex-ppt-inspect/source-slides/source-slide-06.png",
+      "layoutPath": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/layouts/source-slide-06.layout.json",
+      "layoutRelativePath": ".codex-ppt-inspect/layouts/source-slide-06.layout.json"
+    },
+    {
+      "slide": 7,
+      "previewPath": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/source-slides/source-slide-07.png",
+      "previewRelativePath": ".codex-ppt-inspect/source-slides/source-slide-07.png",
+      "layoutPath": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/layouts/source-slide-07.layout.json",
+      "layoutRelativePath": ".codex-ppt-inspect/layouts/source-slide-07.layout.json"
+    },
+    {
+      "slide": 8,
+      "previewPath": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/source-slides/source-slide-08.png",
+      "previewRelativePath": ".codex-ppt-inspect/source-slides/source-slide-08.png",
+      "layoutPath": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/layouts/source-slide-08.layout.json",
+      "layoutRelativePath": ".codex-ppt-inspect/layouts/source-slide-08.layout.json"
+    },
+    {
+      "slide": 9,
+      "previewPath": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/source-slides/source-slide-09.png",
+      "previewRelativePath": ".codex-ppt-inspect/source-slides/source-slide-09.png",
+      "layoutPath": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/layouts/source-slide-09.layout.json",
+      "layoutRelativePath": ".codex-ppt-inspect/layouts/source-slide-09.layout.json"
+    }
+  ],
+  "inspectPath": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/template-inspect.ndjson",
+  "inspectRelativePath": ".codex-ppt-inspect/template-inspect.ndjson",
+  "inspectTruncated": true,
+  "inspectMetadata": {
+    "revision": "4m0cb7",
+    "target": {
+      "id": "pr/m71e2e"
+    },
+    "kind": {
+      "requested": "slide,textbox,shape,image,table,chart",
+      "tokens": [
+        "slide",
+        "textbox",
+        "shape",
+        "image",
+        "table",
+        "chart"
+      ]
+    },
+    "include": {
+      "tokens": []
+    },
+    "exclude": {
+      "tokens": []
+    },
+    "notices": []
+  },
+  "extractedMedia": [
+    {
+      "entry": "ppt/media/",
+      "path": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/assets/ppt/media/media",
+      "relativePath": ".codex-ppt-inspect/assets/ppt/media/media",
+      "bytes": 0
+    },
+    {
+      "entry": "ppt/media/image-6-1.png",
+      "path": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/assets/ppt/media/image-6-1.png",
+      "relativePath": ".codex-ppt-inspect/assets/ppt/media/image-6-1.png",
+      "bytes": 366349
+    },
+    {
+      "entry": "ppt/media/image-7-1.png",
+      "path": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/assets/ppt/media/image-7-1.png",
+      "relativePath": ".codex-ppt-inspect/assets/ppt/media/image-7-1.png",
+      "bytes": 152745
+    },
+    {
+      "entry": "ppt/media/image-5-1.png",
+      "path": "/Users/zhouyiming/Documents/work/micro_lesson/lesson/.codex-ppt-inspect/assets/ppt/media/image-5-1.png",
+      "relativePath": ".codex-ppt-inspect/assets/ppt/media/image-5-1.png",
+      "bytes": 394815
+    }
+  ],
+  "fonts": [
+    "+mj-cs",
+    "+mj-ea",
+    "+mj-lt",
+    "+mn-cs",
+    "+mn-ea",
+    "+mn-lt",
+    "Angsana New",
+    "Arial",
+    "Cordia New",
+    "DaunPenh",
+    "DokChampa",
+    "Ebrima",
+    "Estrangelo Edessa",
+    "Euphemia",
+    "Gautami",
+    "Hiragino Sans GB",
+    "Iskoola Pota",
+    "Javanese Text",
+    "Kalinga",
+    "Kartika",
+    "Latha",
+    "Leelawadee UI",
+    "MV Boli",
+    "Mangal",
+    "Microsoft Himalaya",
+    "Microsoft JhengHei",
+    "Microsoft New Tai Lue",
+    "Microsoft Tai Le",
+    "Microsoft Uighur",
+    "Microsoft Yi Baiti",
+    "Mongolian Baiti",
+    "MoolBoran",
+    "Myanmar Text",
+    "Nirmala UI",
+    "Nyala",
+    "Phagspa",
+    "Plantagenet Cherokee",
+    "Raavi",
+    "Segoe UI",
+    "Shruti",
+    "Sylfaen",
+    "Times New Roman",
+    "Tunga",
+    "Vrinda",
+    "新細明體",
+    "游ゴシック",
+    "游ゴシック Light",
+    "等线",
+    "等线 Light",
+    "맑은 고딕"
+  ],
+  "packageParts": {
+    "mediaCount": 4,
+    "slideXmlCount": 9,
+    "chartCount": 0,
+    "tableSlideCount": 1
+  }
+}

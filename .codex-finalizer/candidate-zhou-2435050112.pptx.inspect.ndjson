@@ -1,0 +1,185 @@
+{"kind":"deck","id":"pr/9uysns","name":"Deck"}
+{"kind":"layout","layoutId":"/ppt/slideMasters/slideMaster1.xml","name":"","type":"master"}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout1.xml","name":"DEFAULT"}
+{"kind":"slide","id":"sl/y90nupkv","slide":1,"title":"SMART DRIVE COMPANION","textShapes":8}
+{"kind":"textbox","id":"sh/547294r6","slide":1,"name":"Text 0","text":"SMART DRIVE COMPANION","textPreview":"SMART DRIVE COMPANION","textChars":21,"textLines":1,"bbox":[82.56,69.12,499.2,32.64]}
+{"kind":"textbox","id":"sh/k3yl0zql","slide":1,"name":"Text 1","text":"智驾伴侣","textPreview":"智驾伴侣","textChars":4,"textLines":1,"bbox":[80.64,148.8,643.2,94.08]}
+{"kind":"textbox","id":"sh/7qp4be9c","slide":1,"name":"Text 2","text":"Smart Drive Companion","textPreview":"Smart Drive Companion","textChars":21,"textLines":1,"bbox":[83.52,251.52,528,51.84]}
+{"kind":"shape","id":"sh/65g3298r","slide":1,"name":"Shape 3","bbox":[84.48,330.24,350.4,0]}
+{"kind":"textbox","id":"sh/ts7md4r2","slide":1,"name":"Text 4","text":"面向车主的智能车辆服务平台","textPreview":"面向车主的智能车辆服务平台","textChars":13,"textLines":1,"bbox":[83.52,358.08,614.4,40.32]}
+{"kind":"textbox","id":"sh/sryl4zqx","slide":1,"name":"Text 5","text":"期中项目汇报","textPreview":"期中项目汇报","textChars":6,"textLines":1,"bbox":[83.52,407.04,316.8,36.48]}
+{"kind":"textbox","id":"sh/fu94fe98","slide":1,"name":"Text 6","text":"汇报人：周轩亦  ·  学号：2435050112","textPreview":"汇报人：周轩亦  ·  学号：2435050112","textChars":25,"textLines":1,"bbox":[84.48,533.76,403.2,28.8]}
+{"kind":"textbox","id":"sh/utg3698n","slide":1,"name":"Text 7","text":"2026 年 11 月","textPreview":"2026 年 11 月","textChars":11,"textLines":1,"bbox":[84.48,572.16,307.2,28.8]}
+{"kind":"textbox","id":"sh/wn6dc7eh","slide":1,"name":"Text 8","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[1012.8,453.12,192,105.6]}
+{"kind":"notes","id":"nt/y90nupkv","slide":1,"text":"各位老师好，我是周轩亦，学号 2435050112。我的期中项目叫智驾伴侣，面向车主提供车辆状态、告警、驾驶行为和碳排数据服务。本次汇报重点说明项目从单体应用拆分成五个微服务后，业务边界如何划分、服务之间如何协作，以及目前完成了哪些部署和验证。"}
+{"kind":"slide","id":"sl/hwbqtkby","slide":2,"title":"智驾伴侣 · 期中项目汇报","textShapes":20}
+{"kind":"textbox","id":"sh/9072xkry","slide":2,"name":"Text 0","text":"智驾伴侣 · 期中项目汇报","textPreview":"智驾伴侣 · 期中项目汇报","textChars":13,"textLines":1,"bbox":[67.2,680.64,403.2,19.2]}
+{"kind":"textbox","id":"sh/ozy1ofad","slide":2,"name":"Text 1","text":"02 / 09","textPreview":"02 / 09","textChars":7,"textLines":1,"bbox":[1105.92,675.84,107.52,24.96]}
+{"kind":"textbox","id":"sh/b29kza94","slide":2,"name":"Text 2","text":"00","textPreview":"00","textChars":2,"textLines":1,"bbox":[65.28,46.08,67.2,30.72]}
+{"kind":"textbox","id":"sh/a10jqpsj","slide":2,"name":"Text 3","text":"CONTENTS","textPreview":"CONTENTS","textChars":8,"textLines":1,"bbox":[118.08,45.12,268.8,30.72]}
+{"kind":"textbox","id":"sh/x4r21kru","slide":2,"name":"Text 4","text":"目录","textPreview":"目录","textChars":2,"textLines":1,"bbox":[65.28,79.68,1046.4,59.52]}
+{"kind":"shape","id":"sh/w3i1sfa9","slide":2,"name":"Shape 5","bbox":[67.2,145.92,1144.32,0]}
+{"kind":"textbox","id":"sh/r65knqtk","slide":2,"name":"Text 6","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[92.16,184.32,69.12,40.32]}
+{"kind":"textbox","id":"sh/q5wjelsz","slide":2,"name":"Text 7","text":"项目背景与主要用途","textPreview":"项目背景与主要用途","textChars":9,"textLines":1,"bbox":[170.88,182.4,425.28,40.32]}
+{"kind":"textbox","id":"sh/ove9o7yd","slide":2,"name":"Text 8","text":"从车主需求与套餐分层切入","textPreview":"从车主需求与套餐分层切入","textChars":12,"textLines":1,"bbox":[170.88,229.44,425.28,32.64]}
+{"kind":"textbox","id":"sh/9wnqhczy","slide":2,"name":"Text 9","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[92.16,347.52,69.12,40.32]}
+{"kind":"textbox","id":"sh/mtwrmxg7","slide":2,"name":"Text 10","text":"当前技术架构","textPreview":"当前技术架构","textChars":6,"textLines":1,"bbox":[170.88,345.6,425.28,40.32]}
+{"kind":"textbox","id":"sh/nu58f2hs","slide":2,"name":"Text 11","text":"从单体应用演进为五个微服务","textPreview":"从单体应用演进为五个微服务","textChars":13,"textLines":1,"bbox":[170.88,392.64,425.28,32.64]}
+{"kind":"textbox","id":"sh/wjy9sry9","slide":2,"name":"Text 12","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[656.64,182.4,69.12,40.32]}
+{"kind":"textbox","id":"sh/xk7qlczu","slide":2,"name":"Text 13","text":"已完成的功能与技术工作","textPreview":"已完成的功能与技术工作","textChars":11,"textLines":1,"bbox":[735.36,180.48,443.52,40.32]}
+{"kind":"textbox","id":"sh/ahwrqhgj","slide":2,"name":"Text 14","text":"数据边界、跨服务通信、部署与验证","textPreview":"数据边界、跨服务通信、部署与验证","textChars":16,"textLines":1,"bbox":[735.36,227.52,443.52,32.64]}
+{"kind":"textbox","id":"sh/bip8jmho","slide":2,"name":"Text 15","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[656.64,311.04,69.12,40.32]}
+{"kind":"textbox","id":"sh/cnupgny5","slide":2,"name":"Text 16","text":"遇到的挑战与解决方案","textPreview":"遇到的挑战与解决方案","textChars":10,"textLines":1,"bbox":[735.36,309.12,443.52,40.32]}
+{"kind":"textbox","id":"sh/do3q9szq","slide":2,"name":"Text 17","text":"版本兼容、Nacos 端口、依赖失败","textPreview":"版本兼容、Nacos 端口、依赖失败","textChars":18,"textLines":1,"bbox":[735.36,356.16,443.52,32.64]}
+{"kind":"textbox","id":"sh/t8byxkn2","slide":2,"name":"Text 18","text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[656.64,439.68,69.12,40.32]}
+{"kind":"textbox","id":"sh/s72xofmh","slide":2,"name":"Text 19","text":"尚未完成的内容与后续计划","textPreview":"尚未完成的内容与后续计划","textChars":12,"textLines":1,"bbox":[735.36,437.76,443.52,40.32]}
+{"kind":"textbox","id":"sh/76twva5c","slide":2,"name":"Text 20","text":"网关、配置中心、分布式事务与可观测性","textPreview":"网关、配置中心、分布式事务与可观测性","textChars":18,"textLines":1,"bbox":[735.36,484.8,443.52,32.64]}
+{"kind":"shape","id":"sh/65kfmpor","slide":2,"name":"Shape 21","bbox":[593.28,170.88,0,453.12]}
+{"kind":"notes","id":"nt/hwbqtkby","slide":2,"text":"报告按五个部分展开。第一部分交代项目要解决什么问题，以及三类套餐分别覆盖哪些能力。第二部分说明当前技术架构。第三部分展示已经落地的代码、部署和验证结果。第四部分说明开发过程中遇到的问题和解决方式。最后说明尚未完成的能力，以及后续计划的先后顺序。"}
+{"kind":"slide","id":"sl/ofy9wn61","slide":3,"title":"智驾伴侣 · 期中项目汇报","textShapes":14}
+{"kind":"textbox","id":"sh/cza94vmx","slide":3,"name":"Text 0","text":"智驾伴侣 · 期中项目汇报","textPreview":"智驾伴侣 · 期中项目汇报","textChars":13,"textLines":1,"bbox":[67.2,680.64,403.2,19.2]}
+{"kind":"textbox","id":"sh/d0jax03i","slide":3,"name":"Text 1","text":"03 / 09","textPreview":"03 / 09","textChars":7,"textLines":1,"bbox":[1105.92,675.84,107.52,24.96]}
+{"kind":"textbox","id":"sh/298ryl4v","slide":3,"name":"Text 2","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[65.28,46.08,67.2,30.72]}
+{"kind":"textbox","id":"sh/3ah8rqlg","slide":3,"name":"Text 3","text":"BACKGROUND","textPreview":"BACKGROUND","textChars":10,"textLines":1,"bbox":[118.08,45.12,268.8,30.72]}
+{"kind":"textbox","id":"sh/obq90bml","slide":3,"name":"Text 4","text":"项目背景与用途","textPreview":"项目背景与用途","textChars":7,"textLines":1,"bbox":[65.28,79.68,1046.4,59.52]}
+{"kind":"textbox","id":"sh/pcjqtg36","slide":3,"name":"Text 5","text":"面向车主，按套餐提供差异化数据服务","textPreview":"面向车主，按套餐提供差异化数据服务","textChars":17,"textLines":1,"bbox":[816,122.88,398.4,34.56]}
+{"kind":"textbox","id":"sh/m5cra54z","slide":3,"name":"Text 6","text":"项目定位","textPreview":"项目定位","textChars":4,"textLines":1,"bbox":[67.2,151.68,433.92,26.88]}
+{"kind":"textbox","id":"sh/n6ls3alk","slide":3,"name":"Text 7","text":"面向车主的智能车辆服务平台，围绕车辆状态与使用数据形成持续可查询的服务闭环。","textPreview":"面向车主的智能车辆服务平台，围绕车辆状态与使用数据形成持续可查询的服务闭环。","textChars":38,"textLines":1,"bbox":[67.2,184.32,433.92,103.68]}
+{"kind":"textbox","id":"sh/n2l4fq98","slide":3,"name":"Text 8","text":"主要用途","textPreview":"主要用途","textChars":4,"textLines":1,"bbox":[67.2,307.2,433.92,26.88]}
+{"kind":"textbox","id":"sh/m1c3mlsn","slide":3,"name":"Text 9","text":"车辆定位、告警分级、驾驶行为分析、碳排核算。","textPreview":"车辆定位、告警分级、驾驶行为分析、碳排核算。","textChars":22,"textLines":1,"bbox":[67.2,339.84,433.92,82.56]}
+{"kind":"textbox","id":"sh/943mhgre","slide":3,"name":"Text 10","text":"业务分层","textPreview":"业务分层","textChars":4,"textLines":1,"bbox":[67.2,437.76,433.92,26.88]}
+{"kind":"textbox","id":"sh/83ulovat","slide":3,"name":"Text 11","text":"轻量版提供基础状态\n标准版增加告警分级与驾驶分析\n豪华版提供碳排及高级体验","textPreview":"轻量版提供基础状态 | 标准版增加告警分级与驾驶分析 | 豪华版提供碳排及高级体验","textChars":37,"textLines":3,"bbox":[67.2,470.4,433.92,120.96]}
+{"kind":"shape","id":"sh/v6l4jq94","slide":3,"name":"Text 12","bbox":[535.68,158.4,0.96,0.96]}
+{"kind":"textbox","id":"sh/a5c3ql8z","slide":3,"name":"Text 13","text":"套餐功能矩阵","textPreview":"套餐功能矩阵","textChars":6,"textLines":1,"bbox":[539.52,148.8,220.8,26.88]}
+{"kind":"textbox","id":"sh/w7ulsvqp","slide":3,"name":"Text 14","text":"当前汇报聚焦后端服务能力；套餐矩阵来自项目 README 与原功能模块划分。","textPreview":"当前汇报聚焦后端服务能力；套餐矩阵来自项目 README 与原功能模块划分。","textChars":38,"textLines":1,"bbox":[540.48,577.92,657.6,32.64]}
+{"kind":"table","id":"tb/kfmt0ru1","slide":3,"name":"Table 0","rows":6,"cols":4,"preview":"能力 | 轻量版 | 标准版 | 豪华版","bbox":[539.52,186.24,673.92,382.08]}
+{"kind":"notes","id":"nt/ofy9wn61","slide":3,"text":"智驾伴侣的核心用户是车主。平台以车辆档案为入口，围绕车辆状态、告警、驾驶事件和月度行车数据提供查询与分析。轻量版保留基础状态和告警列表，标准版增加告警分级、驾驶行为和月报，豪华版再增加碳排与高级体验。当前汇报主要聚焦后端服务能力，套餐矩阵用于说明不同业务能力的边界。"}
+{"kind":"slide","id":"sl/jyx0ra1s","slide":4,"title":"02","textShapes":10}
+{"kind":"textbox","id":"sh/e9sj2tsv","slide":4,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[72,44,52,28]}
+{"kind":"textbox","id":"sh/1cj2d8b6","slide":4,"text":"ARCHITECTURE","textPreview":"ARCHITECTURE","textChars":12,"textLines":1,"bbox":[123,43,220,28]}
+{"kind":"textbox","id":"sh/0ba143al","slide":4,"text":"当前技术架构","textPreview":"当前技术架构","textChars":6,"textLines":1,"bbox":[66,77,820,53]}
+{"kind":"textbox","id":"sh/rm1k7yt4","slide":4,"text":"五个服务按业务边界拆分，每个服务连接独立数据库","textPreview":"五个服务按业务边界拆分，每个服务连接独立数据库","textChars":23,"textLines":1,"bbox":[72,132,860,26]}
+{"kind":"textbox","id":"sh/ql8jytsj","slide":4,"text":"核心服务与数据归属","textPreview":"核心服务与数据归属","textChars":9,"textLines":1,"bbox":[72,172,300,22]}
+{"kind":"textbox","id":"sh/sna103ap","slide":4,"text":"数据边界","textPreview":"数据边界","textChars":4,"textLines":1,"bbox":[72,485,180,22]}
+{"kind":"textbox","id":"sh/3ihk3et8","slide":4,"text":"每个服务只读写自己的数据库，跨服务只保存业务 ID。\n不建立跨库外键，也不访问其他服务的 Repository。","textPreview":"每个服务只读写自己的数据库，跨服务只保存业务 ID。 | 不建立跨库外键，也不访问其他服务的 Repository。","textChars":56,"textLines":2,"bbox":[72,512,535,58]}
+{"kind":"textbox","id":"sh/ih8ju9sn","slide":4,"text":"远程依赖","textPreview":"远程依赖","textChars":4,"textLines":1,"bbox":[660,485,180,22]}
+{"kind":"textbox","id":"sh/kbm987y5","slide":4,"text":"告警、驾驶行为：调用 vehicle-service 校验车辆\n碳排：调用 driving-behavior-service 读取驾驶月报","textPreview":"告警、驾驶行为：调用 vehicle-service 校验车辆 | 碳排：调用 driving-behavior-service 读取驾驶月报","textChars":69,"textLines":2,"bbox":[660,512,535,58]}
+{"kind":"textbox","id":"sh/5cva1cfq","slide":4,"text":"Nacos 3.2.4 将服务注册到 COURSE_GROUP，并提供动态服务发现","textPreview":"Nacos 3.2.4 将服务注册到 COURSE_GROUP，并提供动态服务发现","textChars":41,"textLines":1,"bbox":[72,620,1136,38]}
+{"kind":"table","id":"tb/gvyd4vud","slide":4,"name":"","rows":6,"cols":4,"preview":"业务服务 | 端口 | 主要职责 | 独立数据库","bbox":[72,198,1136,258]}
+{"kind":"notes","id":"nt/jyx0ra1s","slide":4,"text":"当前系统由五个 Spring Boot 微服务组成。用户服务管理车主与套餐，车辆服务管理车辆档案，告警服务保存告警并校验等级，驾驶行为服务保存驾驶事件并生成月报，碳排服务计算月度碳排放。五个服务各自连接独立数据库，只保存对方的业务 ID。服务统一注册到 Nacos 的 COURSE_GROUP，调用方通过服务名获取实例，不依赖固定 IP。"}
+{"kind":"slide","id":"sl/i107q5of","slide":5,"title":"智驾伴侣 · 期中项目汇报","textShapes":16}
+{"kind":"textbox","id":"sh/dgbulwnm","slide":5,"name":"Text 0","text":"智驾伴侣 · 期中项目汇报","textPreview":"智驾伴侣 · 期中项目汇报","textChars":13,"textLines":1,"bbox":[67.2,680.64,403.2,19.2]}
+{"kind":"textbox","id":"sh/cf2tcr61","slide":5,"name":"Text 1","text":"05 / 09","textPreview":"05 / 09","textChars":7,"textLines":1,"bbox":[1105.92,675.84,107.52,24.96]}
+{"kind":"textbox","id":"sh/z2tcnm5s","slide":5,"name":"Text 2","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[65.28,46.08,67.2,30.72]}
+{"kind":"textbox","id":"sh/yhkbe1o7","slide":5,"name":"Text 3","text":"IMPLEMENTATION","textPreview":"IMPLEMENTATION","textChars":14,"textLines":1,"bbox":[118.08,45.12,268.8,30.72]}
+{"kind":"textbox","id":"sh/l4bupwny","slide":5,"name":"Text 4","text":"已完成的功能与代码","textPreview":"已完成的功能与代码","textChars":9,"textLines":1,"bbox":[65.28,79.68,1046.4,59.52]}
+{"kind":"textbox","id":"sh/n6dcr65o","slide":5,"name":"Text 6","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[67.2,147.84,49.92,28.8]}
+{"kind":"textbox","id":"sh/m5kbi1oj","slide":5,"name":"Text 7","text":"独立数据读写","textPreview":"独立数据读写","textChars":6,"textLines":1,"bbox":[115.2,143.04,379.2,36.48]}
+{"kind":"textbox","id":"sh/w32dkbuh","slide":5,"name":"Text 8","text":"各服务拥有独立数据库，只保留业务 ID，不建立跨库外键。","textPreview":"各服务拥有独立数据库，只保留业务 ID，不建立跨库外键。","textChars":28,"textLines":1,"bbox":[115.2,188.16,401.28,69.12]}
+{"kind":"textbox","id":"sh/x4vedgvm","slide":5,"name":"Text 9","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[67.2,296.64,49.92,28.8]}
+{"kind":"textbox","id":"sh/ahkvi1cb","slide":5,"name":"Text 10","text":"跨服务通信","textPreview":"跨服务通信","textChars":5,"textLines":1,"bbox":[115.2,291.84,379.2,36.48]}
+{"kind":"textbox","id":"sh/v2twb6dw","slide":5,"name":"Text 11","text":"告警使用 OpenFeign；驾驶行为与碳排使用 DiscoveryClient 和 RestTemplate。","textPreview":"告警使用 OpenFeign；驾驶行为与碳排使用 DiscoveryClient 和 RestTemplate。","textChars":56,"textLines":1,"bbox":[115.2,336.96,401.28,69.12]}
+{"kind":"textbox","id":"sh/k7mxovud","slide":5,"name":"Text 12","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[67.2,445.44,49.92,28.8]}
+{"kind":"textbox","id":"sh/58vehgvy","slide":5,"name":"Text 13","text":"业务规则校验","textPreview":"业务规则校验","textChars":6,"textLines":1,"bbox":[115.2,440.64,379.2,36.48]}
+{"kind":"textbox","id":"sh/i54fmlc7","slide":5,"name":"Text 14","text":"告警等级限定为 1–3；找不到实例返回 503；车辆不存在返回 400。","textPreview":"告警等级限定为 1–3；找不到实例返回 503；车辆不存在返回 400。","textChars":36,"textLines":1,"bbox":[115.2,485.76,401.28,69.12]}
+{"kind":"textbox","id":"sh/j6dwfqds","slide":5,"name":"Text 15","text":"关键顺序：先发现实例，再校验车辆，最后写入本地数据库。","textPreview":"关键顺序：先发现实例，再校验车辆，最后写入本地数据库。","textChars":27,"textLines":1,"bbox":[69.12,581.76,480,40.32]}
+{"kind":"shape","id":"sh/sb6xsvu9","slide":5,"name":"Shape 16","bbox":[568.32,130.56,629.76,475.2]}
+{"kind":"textbox","id":"sh/hgrmpwj2","slide":5,"name":"Text 17","text":"第 7 周代码：先获取 vehicle-service 实例，再校验车辆","textPreview":"第 7 周代码：先获取 vehicle-service 实例，再校验车辆","textChars":36,"textLines":1,"bbox":[572.16,618.24,617.28,28.8]}
+{"kind":"image","id":"im/zu9wb6pc","slide":5,"name":"Image 0","bbox":[578.88,140.16,608.64,456.96]}
+{"kind":"notes","id":"nt/i107q5of","slide":5,"text":"代码落地时，我先保证每个服务只操作自己的数据库。告警服务创建告警前会校验车辆是否存在，当前通过 OpenFeign 调用车辆服务并配置 fallback；驾驶行为和碳排服务使用 DiscoveryClient 找到实例，再用 RestTemplate 发起请求。业务规则包括告警等级只能是 1 到 3、车辆不存在返回 400、依赖服务不可用返回 503，只有校验通过才写入本地数据库。"}
+{"kind":"slide","id":"sl/x8f69ofe","slide":6,"title":"智驾伴侣 · 期中项目汇报","textShapes":22}
+{"kind":"textbox","id":"sh/yhg7epsj","slide":6,"name":"Text 0","text":"智驾伴侣 · 期中项目汇报","textPreview":"智驾伴侣 · 期中项目汇报","textChars":13,"textLines":1,"bbox":[67.2,680.64,403.2,19.2]}
+{"kind":"textbox","id":"sh/zi98nu94","slide":6,"name":"Text 1","text":"06 / 09","textPreview":"06 / 09","textChars":7,"textLines":1,"bbox":[1105.92,675.84,107.52,24.96]}
+{"kind":"textbox","id":"sh/87ipkzal","slide":6,"name":"Text 2","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[65.28,46.08,67.2,30.72]}
+{"kind":"textbox","id":"sh/98rqt4r6","slide":6,"name":"Text 3","text":"IMPLEMENTATION","textPreview":"IMPLEMENTATION","textChars":14,"textLines":1,"bbox":[118.08,45.12,268.8,30.72]}
+{"kind":"textbox","id":"sh/ml07i9sv","slide":6,"name":"Text 4","text":"已完成的技术工作：环境与部署","textPreview":"已完成的技术工作：环境与部署","textChars":14,"textLines":1,"bbox":[65.28,79.68,1046.4,59.52]}
+{"kind":"textbox","id":"sh/7m98ru9g","slide":6,"name":"Text 5","text":"容器化、服务发现、自动化验证","textPreview":"容器化、服务发现、自动化验证","textChars":14,"textLines":1,"bbox":[816,122.88,398.4,34.56]}
+{"kind":"textbox","id":"sh/oryp8fah","slide":6,"name":"Text 6","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[67.2,146.88,48,26.88]}
+{"kind":"textbox","id":"sh/pc76hkr2","slide":6,"name":"Text 7","text":"容器化","textPreview":"容器化","textChars":3,"textLines":1,"bbox":[113.28,143.04,126,32.64]}
+{"kind":"textbox","id":"sh/h4bupgn6","slide":6,"name":"Text 8","text":"多阶段 Dockerfile，将服务打包为轻量级镜像。","textPreview":"多阶段 Dockerfile，将服务打包为轻量级镜像。","textChars":27,"textLines":1,"bbox":[248,139.2,242,72.96]}
+{"kind":"textbox","id":"sh/w32twb6l","slide":6,"name":"Text 9","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[67.2,265.92,48,26.88]}
+{"kind":"textbox","id":"sh/v2tcn650","slide":6,"name":"Text 10","text":"一键编排","textPreview":"一键编排","textChars":4,"textLines":1,"bbox":[113.28,262.08,126,32.64]}
+{"kind":"textbox","id":"sh/u1kbu1ov","slide":6,"name":"Text 11","text":"Docker Compose 管理五个业务服务及对应数据库。","textPreview":"Docker Compose 管理五个业务服务及对应数据库。","textChars":30,"textLines":1,"bbox":[248,258.24,242,72.96]}
+{"kind":"textbox","id":"sh/5svutgni","slide":6,"name":"Text 12","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[67.2,384.96,48,26.88]}
+{"kind":"textbox","id":"sh/47mt0b6x","slide":6,"name":"Text 13","text":"注册中心","textPreview":"注册中心","textChars":4,"textLines":1,"bbox":[113.28,381.12,126,32.64]}
+{"kind":"textbox","id":"sh/j6dcr65c","slide":6,"name":"Text 14","text":"Nacos 3.2.4 以 standalone 模式运行，服务统一注册至 COURSE_GROUP。","textPreview":"Nacos 3.2.4 以 standalone 模式运行，服务统一注册至 COURSE_GROUP。","textChars":51,"textLines":1,"bbox":[248,377.28,242,72.96]}
+{"kind":"textbox","id":"sh/i54bylor","slide":6,"name":"Text 15","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[67.2,504,48,26.88]}
+{"kind":"textbox","id":"sh/twfux0ne","slide":6,"name":"Text 16","text":"自动化验证","textPreview":"自动化验证","textChars":5,"textLines":1,"bbox":[113.28,500.16,126,32.64]}
+{"kind":"textbox","id":"sh/svmt4v6t","slide":6,"name":"Text 17","text":"11 个测试全部通过；健康检查与服务下线恢复流程已验证。","textPreview":"11 个测试全部通过；健康检查与服务下线恢复流程已验证。","textChars":28,"textLines":1,"bbox":[248,496.32,242,72.96]}
+{"kind":"textbox","id":"sh/cbe5g3ih","slide":6,"name":"Text 18","text":"运行结果","textPreview":"运行结果","textChars":4,"textLines":1,"bbox":[520.32,133.44,172.8,26.88]}
+{"kind":"shape","id":"sh/dcnm98zm","slide":6,"name":"Shape 19","bbox":[518.4,167.04,691.2,355.2]}
+{"kind":"textbox","id":"sh/zep4byhs","slide":6,"name":"Text 24","text":"smoke-test.sh  ·  verify-discovery.sh","textPreview":"smoke-test.sh  ·  verify-discovery.sh","textChars":37,"textLines":1,"bbox":[525.12,589.44,465.6,28.8]}
+{"kind":"textbox","id":"sh/1k3mhozu","slide":6,"text":"COURSE_GROUP 下 5 个服务均为健康实例","textPreview":"COURSE_GROUP 下 5 个服务均为健康实例","textChars":26,"textLines":1,"bbox":[523,536,585,30]}
+{"kind":"textbox","id":"sh/jet8nm1c","slide":6,"text":"2026-11-07 实测","textPreview":"2026-11-07 实测","textChars":13,"textLines":1,"bbox":[1108,539,100,24]}
+{"kind":"image","id":"im/3id8b69w","slide":6,"name":"Image 0","bbox":[528,176.64,671.04,336]}
+{"kind":"notes","id":"nt/x8f69ofe","slide":6,"text":"部署方面，五个服务都通过多阶段 Dockerfile 打包成镜像，Docker Compose 统一管理业务服务、五个数据库和 Nacos。截图显示 COURSE_GROUP 下的五个服务都有健康实例。测试方面，五个服务共 11 个测试全部通过，测试使用 H2 内存数据库并关闭 Nacos 注册，不依赖真实运行环境。smoke-test 检查健康接口，verify-discovery 验证正常调用、车辆服务下线返回 503，以及恢复后重新返回 200。"}
+{"kind":"slide","id":"sl/gnmp4jqx","slide":7,"title":"智驾伴侣 · 期中项目汇报","textShapes":24}
+{"kind":"textbox","id":"sh/cb2tkvap","slide":7,"name":"Text 0","text":"智驾伴侣 · 期中项目汇报","textPreview":"智驾伴侣 · 期中项目汇报","textChars":13,"textLines":1,"bbox":[67.2,680.64,403.2,19.2]}
+{"kind":"textbox","id":"sh/dcbud0ra","slide":7,"name":"Text 1","text":"07 / 09","textPreview":"07 / 09","textChars":7,"textLines":1,"bbox":[1105.92,675.84,107.52,24.96]}
+{"kind":"textbox","id":"sh/ydkbm5sv","slide":7,"name":"Text 2","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[65.28,46.08,67.2,30.72]}
+{"kind":"textbox","id":"sh/zedcfa9g","slide":7,"name":"Text 3","text":"CHALLENGES","textPreview":"CHALLENGES","textChars":10,"textLines":1,"bbox":[118.08,45.12,268.8,30.72]}
+{"kind":"textbox","id":"sh/kzmdova1","slide":7,"name":"Text 4","text":"遇到的挑战与解决方案","textPreview":"遇到的挑战与解决方案","textChars":10,"textLines":1,"bbox":[65.28,79.68,1046.4,59.52]}
+{"kind":"textbox","id":"sh/eh0ba1sr","slide":7,"name":"Text 6","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[67.2,139.2,48,28.8]}
+{"kind":"textbox","id":"sh/fi9c369c","slide":7,"name":"Text 7","text":"版本兼容性冲突","textPreview":"版本兼容性冲突","textChars":7,"textLines":1,"bbox":[115.2,134.4,698.88,36.48]}
+{"kind":"textbox","id":"sh/baxkjqlk","slide":7,"name":"Text 8","text":"现象  Spring Boot 4 与 Spring Cloud Alibaba 版本不匹配，服务无法连接。","textPreview":"现象  Spring Boot 4 与 Spring Cloud Alibaba 版本不匹配，服务无法连接。","textChars":54,"textLines":1,"bbox":[115.2,177.6,698.88,30.72]}
+{"kind":"textbox","id":"sh/a9ojq5kz","slide":7,"name":"Text 9","text":"解决  统一为 Spring Boot 3.2.x、Java 17 与 SCA 2023.0.1.0。","textPreview":"解决  统一为 Spring Boot 3.2.x、Java 17 与 SCA 2023.0.1.0。","textChars":51,"textLines":1,"bbox":[115.2,212.16,698.88,46.08]}
+{"kind":"shape","id":"sh/xcz2l03q","slide":7,"name":"Shape 10","bbox":[67.2,267.84,753.6,0]}
+{"kind":"textbox","id":"sh/cbq1sv25","slide":7,"name":"Text 11","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[67.2,294.72,48,28.8]}
+{"kind":"textbox","id":"sh/n6x0fqlo","slide":7,"name":"Text 12","text":"Nacos 3 端口与路径变化","textPreview":"Nacos 3 端口与路径变化","textChars":15,"textLines":1,"bbox":[115.2,289.92,698.88,36.48]}
+{"kind":"textbox","id":"sh/25ojml43","slide":7,"name":"Text 13","text":"现象  访问 8848 控制台返回空响应。","textPreview":"现象  访问 8848 控制台返回空响应。","textChars":21,"textLines":1,"bbox":[115.2,333.12,698.88,30.72]}
+{"kind":"textbox","id":"sh/p8fih03e","slide":7,"name":"Text 14","text":"解决  控制台使用 18080，SDK 使用 8848 / 9848，并通过环境变量隔离。","textPreview":"解决  控制台使用 18080，SDK 使用 8848 / 9848，并通过环境变量隔离。","textChars":45,"textLines":1,"bbox":[115.2,367.68,698.88,46.08]}
+{"kind":"shape","id":"sh/o761ov2t","slide":7,"name":"Shape 15","bbox":[67.2,423.36,753.6,0]}
+{"kind":"textbox","id":"sh/f2d0b6lc","slide":7,"name":"Text 16","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[67.2,450.24,48,28.8]}
+{"kind":"textbox","id":"sh/eh4jil4r","slide":7,"name":"Text 17","text":"跨服务依赖失败产生脏数据风险","textPreview":"跨服务依赖失败产生脏数据风险","textChars":14,"textLines":1,"bbox":[115.2,445.44,698.88,36.48]}
+{"kind":"textbox","id":"sh/id4ju1oz","slide":7,"name":"Text 18","text":"现象  依赖服务不可用时，请求可能绕过业务校验。","textPreview":"现象  依赖服务不可用时，请求可能绕过业务校验。","textChars":24,"textLines":1,"bbox":[115.2,488.64,698.88,30.72]}
+{"kind":"textbox","id":"sh/jedkn654","slide":7,"name":"Text 19","text":"解决  增加实例空判断并返回 503；车辆不存在返回 400，阻断落库。","textPreview":"解决  增加实例空判断并返回 503；车辆不存在返回 400，阻断落库。","textChars":36,"textLines":1,"bbox":[115.2,523.2,698.88,46.08]}
+{"kind":"shape","id":"sh/4fm1wb6p","slide":7,"name":"Shape 20","bbox":[67.2,578.88,753.6,0]}
+{"kind":"textbox","id":"sh/50v2pgna","slide":7,"name":"Text 21","text":"运行证据","textPreview":"运行证据","textChars":4,"textLines":1,"bbox":[879.36,136.32,144,26.88]}
+{"kind":"shape","id":"sh/q143ylov","slide":7,"name":"Shape 22","bbox":[877.44,170.88,334.08,165.12]}
+{"kind":"textbox","id":"sh/s3ml0v61","slide":7,"name":"Text 23","text":"vehicle-service 下线后返回 503","textPreview":"vehicle-service 下线后返回 503","textChars":25,"textLines":1,"bbox":[881.28,339.84,328.32,28.8]}
+{"kind":"textbox","id":"sh/d4f2t0nm","slide":7,"name":"Text 24","text":"验证链路","textPreview":"验证链路","textChars":4,"textLines":1,"bbox":[881.28,391.68,144,26.88]}
+{"kind":"textbox","id":"sh/e5o32lor","slide":7,"name":"Text 25","text":"正常 200","textPreview":"正常 200","textChars":6,"textLines":1,"bbox":[883.2,430.08,321.6,19.2]}
+{"kind":"textbox","id":"sh/f6xkvq5c","slide":7,"name":"Text 26","text":"实例下线 503","textPreview":"实例下线 503","textChars":8,"textLines":1,"bbox":[883.2,467.52,321.6,19.2]}
+{"kind":"textbox","id":"sh/p0zmlk7u","slide":7,"name":"Text 27","text":"恢复后 200","textPreview":"恢复后 200","textChars":7,"textLines":1,"bbox":[883.2,504.96,321.6,19.2]}
+{"kind":"textbox","id":"sh/ozq5szq9","slide":7,"name":"Text 28","text":"请求在失败阶段被拦截，没有形成无效告警记录。","textPreview":"请求在失败阶段被拦截，没有形成无效告警记录。","textChars":22,"textLines":1,"bbox":[883.2,556.8,318.72,55.68]}
+{"kind":"image","id":"im/wbylkfmp","slide":7,"name":"Image 0","bbox":[886.08,181.44,316.8,141.12]}
+{"kind":"notes","id":"nt/gnmp4jqx","slide":7,"text":"开发中主要遇到三类问题。第一是 Spring Boot 和 Spring Cloud Alibaba 版本不匹配，最后统一到 Spring Boot 3.2、Java 17 和对应的版本管理。第二是 Nacos 3 的控制台、HTTP 服务和 SDK gRPC 使用不同端口，所以分别配置为 18080、8848 和 9848。第三是依赖服务失效时可能产生无效数据，因此增加了 fallback、实例判断和状态码处理，在写库之前阻断请求。"}
+{"kind":"slide","id":"sl/fu1gfa1s","slide":8,"title":"智驾伴侣 · 期中项目汇报","textShapes":24}
+{"kind":"textbox","id":"sh/18byd4zy","slide":8,"name":"Text 0","text":"智驾伴侣 · 期中项目汇报","textPreview":"智驾伴侣 · 期中项目汇报","textChars":13,"textLines":1,"bbox":[67.2,680.64,403.2,19.2]}
+{"kind":"textbox","id":"sh/g72x4zyd","slide":8,"name":"Text 1","text":"08 / 09","textPreview":"08 / 09","textChars":7,"textLines":1,"bbox":[1105.92,675.84,107.52,24.96]}
+{"kind":"textbox","id":"sh/ri9g7uhw","slide":8,"name":"Text 2","text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[65.28,46.08,67.2,30.72]}
+{"kind":"textbox","id":"sh/6h0fypgb","slide":8,"name":"Text 3","text":"ROADMAP","textPreview":"ROADMAP","textChars":7,"textLines":1,"bbox":[118.08,45.12,268.8,30.72]}
+{"kind":"textbox","id":"sh/tkby9kzm","slide":8,"name":"Text 4","text":"尚未完成的内容与后续计划","textPreview":"尚未完成的内容与后续计划","textChars":12,"textLines":1,"bbox":[65.28,79.68,1046.4,59.52]}
+{"kind":"textbox","id":"sh/sjix0zy1","slide":8,"name":"Text 5","text":"当前边界清晰，后续按基础设施能力逐步扩展","textPreview":"当前边界清晰，后续按基础设施能力逐步扩展","textChars":20,"textLines":1,"bbox":[816,122.88,398.4,34.56]}
+{"kind":"textbox","id":"sh/je9g3ahk","slide":8,"name":"Text 6","text":"当前未实现","textPreview":"当前未实现","textChars":5,"textLines":1,"bbox":[67.2,146.88,163.2,26.88]}
+{"kind":"textbox","id":"sh/id0fu50z","slide":8,"name":"Text 7","text":"前端与聚合","textPreview":"前端与聚合","textChars":5,"textLines":1,"bbox":[67.2,193.92,148.8,32.64]}
+{"kind":"textbox","id":"sh/o7ydoret","slide":8,"name":"Text 8","text":"前端 UI、BFF 聚合层","textPreview":"前端 UI、BFF 聚合层","textChars":13,"textLines":1,"bbox":[209.28,192,288,53.76]}
+{"kind":"textbox","id":"sh/98rehwve","slide":8,"name":"Text 9","text":"复杂业务","textPreview":"复杂业务","textChars":4,"textLines":1,"bbox":[67.2,337.92,148.8,32.64]}
+{"kind":"textbox","id":"sh/m5gvmhwn","slide":8,"name":"Text 10","text":"3D 建模、AI 助手、预测性维护","textPreview":"3D 建模、AI 助手、预测性维护","textChars":17,"textLines":1,"bbox":[209.28,336,288,53.76]}
+{"kind":"textbox","id":"sh/n6pwfmd8","slide":8,"name":"Text 11","text":"分布式能力","textPreview":"分布式能力","textChars":5,"textLines":1,"bbox":[67.2,481.92,148.8,32.64]}
+{"kind":"textbox","id":"sh/0jydkreh","slide":8,"name":"Text 12","text":"Seata 分布式事务、消息队列","textPreview":"Seata 分布式事务、消息队列","textChars":16,"textLines":1,"bbox":[209.28,480,288,53.76]}
+{"kind":"shape","id":"sh/1k7edwv2","slide":8,"name":"Shape 13","bbox":[67.2,599.04,437.76,0]}
+{"kind":"textbox","id":"sh/ehgvihwr","slide":8,"name":"Text 14","text":"后续计划","textPreview":"后续计划","textChars":4,"textLines":1,"bbox":[542.4,146.88,163.2,26.88]}
+{"kind":"shape","id":"sh/zipwbmdc","slide":8,"name":"Shape 15","bbox":[568.32,207.36,0,359.04]}
+{"kind":"shape","id":"sh/kfixwbe1","slide":8,"name":"Shape 16","bbox":[558.72,192,19.2,19.2]}
+{"kind":"textbox","id":"sh/lgbepgvm","slide":8,"name":"Text 17","text":"阶段一","textPreview":"阶段一","textChars":3,"textLines":1,"bbox":[604.8,184.32,69.12,24.96]}
+{"kind":"textbox","id":"sh/tw7e9gnq","slide":8,"name":"Text 18","text":"API 网关","textPreview":"API 网关","textChars":6,"textLines":1,"bbox":[677.76,179.52,139.2,34.56]}
+{"kind":"textbox","id":"sh/svydgb65","slide":8,"name":"Text 19","text":"Spring Cloud Gateway 统一鉴权与路由","textPreview":"Spring Cloud Gateway 统一鉴权与路由","textChars":28,"textLines":1,"bbox":[820.8,179.52,379.2,61.44]}
+{"kind":"shape","id":"sh/7u5w765k","slide":8,"name":"Shape 20","bbox":[558.72,334.08,19.2,19.2]}
+{"kind":"textbox","id":"sh/6twve1oz","slide":8,"name":"Text 21","text":"阶段二","textPreview":"阶段二","textChars":3,"textLines":1,"bbox":[604.8,326.4,69.12,24.96]}
+{"kind":"textbox","id":"sh/5sne5wne","slide":8,"name":"Text 22","text":"配置中心","textPreview":"配置中心","textChars":4,"textLines":1,"bbox":[677.76,321.6,139.2,34.56]}
+{"kind":"textbox","id":"sh/kredcr6t","slide":8,"name":"Text 23","text":"Nacos Config 管理环境配置并支持动态刷新","textPreview":"Nacos Config 管理环境配置并支持动态刷新","textChars":26,"textLines":1,"bbox":[820.8,321.6,379.2,61.44]}
+{"kind":"shape","id":"sh/jq5w365o","slide":8,"name":"Shape 24","bbox":[558.72,476.16,19.2,19.2]}
+{"kind":"textbox","id":"sh/i5wva1o3","slide":8,"name":"Text 25","text":"阶段三","textPreview":"阶段三","textChars":3,"textLines":1,"bbox":[604.8,468.48,69.12,24.96]}
+{"kind":"textbox","id":"sh/x4ne1wni","slide":8,"name":"Text 26","text":"可观测性","textPreview":"可观测性","textChars":4,"textLines":1,"bbox":[677.76,463.68,139.2,34.56]}
+{"kind":"textbox","id":"sh/w3ed8r6x","slide":8,"name":"Text 27","text":"SkyWalking 链路追踪与 Prometheus + Grafana 监控","textPreview":"SkyWalking 链路追踪与 Prometheus + Grafana 监控","textChars":40,"textLines":1,"bbox":[820.8,463.68,379.2,61.44]}
+{"kind":"textbox","id":"sh/m9sb2x4v","slide":8,"name":"Text 28","text":"优先补齐统一入口与配置治理，再引入事务、消息与监控能力。","textPreview":"优先补齐统一入口与配置治理，再引入事务、消息与监控能力。","textChars":28,"textLines":1,"bbox":[544.32,580.8,657.6,48]}
+{"kind":"notes","id":"nt/fu1gfa1s","slide":8,"text":"目前还没有做前端、BFF 聚合层、3D 与 AI 能力，也没有引入 Seata、消息队列和完整监控。后续先补 API 网关，统一入口和鉴权；再用 Nacos Config 管理环境配置；最后加入链路追踪和指标监控，并根据业务需要引入分布式事务或消息机制。"}
+{"kind":"slide","id":"sl/udsvah03","slide":9,"title":"09","textShapes":5}
+{"kind":"textbox","id":"sh/1cfmhgne","slide":9,"name":"Text 0","text":"09","textPreview":"09","textChars":2,"textLines":1,"bbox":[1012.8,53.76,187.2,48]}
+{"kind":"textbox","id":"sh/0b65obm9","slide":9,"name":"Text 1","text":"感谢聆听","textPreview":"感谢聆听","textChars":4,"textLines":1,"bbox":[103.68,199.68,691.2,90.24]}
+{"kind":"shape","id":"sh/nex4jq5k","slide":9,"name":"Shape 2","bbox":[107.52,310.08,316.8,0]}
+{"kind":"textbox","id":"sh/mdonql4z","slide":9,"name":"Text 3","text":"欢迎老师批评指正","textPreview":"欢迎老师批评指正","textChars":8,"textLines":1,"bbox":[107.52,339.84,595.2,46.08]}
+{"kind":"textbox","id":"sh/9gzml0nq","slide":9,"name":"Text 4","text":"智驾伴侣  ·  Smart Drive Companion","textPreview":"智驾伴侣  ·  Smart Drive Companion","textChars":30,"textLines":1,"bbox":[107.52,554.88,614.4,30.72]}
+{"kind":"textbox","id":"sh/ofq5svm5","slide":9,"name":"Text 5","text":"2026 年 11 月","textPreview":"2026 年 11 月","textChars":11,"textLines":1,"bbox":[964.8,554.88,201.6,30.72]}
+{"kind":"notes","id":"nt/udsvah03","slide":9,"text":"以上是智驾伴侣期中项目的汇报。项目已经完成五个微服务的基本拆分、数据归属、跨服务调用、容器部署和服务发现验证。感谢老师，欢迎批评指正。"}

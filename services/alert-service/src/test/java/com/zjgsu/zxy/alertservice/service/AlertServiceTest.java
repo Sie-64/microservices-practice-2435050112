@@ -21,13 +21,13 @@ class AlertServiceTest {
     @MockBean
     private AlertRepository alertRepository;
 
-    // 🎯 现在我们需要 Mock VehicleClient
+    // 🎯 模拟 Feign 客户端
     @MockBean
     private VehicleClient vehicleClient;
 
     @Test
-    void testCreateAlert_NoInstances_ShouldThrowException() {
-        // 模拟 Feign 调用时，车辆服务不可用抛出异常
+    void testCreateAlert_DependencyUnavailable_ShouldThrowException() {
+        // 模拟车辆服务不可用，Feign 调用时抛出异常（相当于触发了 Fallback）
         when(vehicleClient.getVehicleById(any())).thenThrow(new RuntimeException("车辆服务不可用，已触发降级：无法校验车辆信息"));
 
         Alert alert = new Alert();
@@ -35,7 +35,7 @@ class AlertServiceTest {
         alert.setAlertType("碰撞");
         alert.setLevel(1);
 
-        // 验证是否抛出了异常
+        // 验证是否抛出了业务异常，证明阻断生效，没有乱写数据库
         assertThrows(IllegalArgumentException.class, () -> {
             alertService.createAlert(alert);
         });
